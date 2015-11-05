@@ -43,13 +43,13 @@ namespace IO.Swagger.Api
         InlineResponse20011 MeasurementsPost (MeasurementPost body);
         
         /// <summary>
-        /// Get Measurements CSV Get Measurements CSV
+        /// Get Measurements CSV Download a CSV containing all user measurements
         /// </summary>
         /// <returns>Stream</returns>
         Stream MeasurementsCsvGet ();
         
         /// <summary>
-        /// Post Request for Measurements CSV Post Request for Measurements CSV
+        /// Post Request for Measurements CSV Use this endpoint to schedule a CSV export containing all user measurements to be emailed to the user within 24 hours.
         /// </summary>
         /// <returns>int?</returns>
         int? MeasurementsRequestCsvPost ();
@@ -247,7 +247,7 @@ namespace IO.Swagger.Api
     
         
         /// <summary>
-        /// Get Measurements CSV Get Measurements CSV
+        /// Get Measurements CSV Download a CSV containing all user measurements
         /// </summary>
         /// <returns>Stream</returns>            
         public Stream MeasurementsCsvGet ()
@@ -285,7 +285,7 @@ namespace IO.Swagger.Api
     
         
         /// <summary>
-        /// Post Request for Measurements CSV Post Request for Measurements CSV
+        /// Post Request for Measurements CSV Use this endpoint to schedule a CSV export containing all user measurements to be emailed to the user within 24 hours.
         /// </summary>
         /// <returns>int?</returns>            
         public int? MeasurementsRequestCsvPost ()
