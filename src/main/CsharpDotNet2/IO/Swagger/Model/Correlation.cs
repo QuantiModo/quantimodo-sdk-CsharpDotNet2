@@ -140,18 +140,18 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// Unit of Cause
+    /// Unit of the predictor variable
     /// </summary>
-    /// <value>Unit of Cause</value>
+    /// <value>Unit of the predictor variable</value>
     [DataMember(Name="cause_unit", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "cause_unit")]
     public string CauseUnit { get; set; }
 
     
     /// <summary>
-    /// Unit ID of Cause
+    /// Unit ID of the predictor variable
     /// </summary>
-    /// <value>Unit ID of Cause</value>
+    /// <value>Unit ID of the predictor variable</value>
     [DataMember(Name="cause_unit_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "cause_unit_id")]
     public int? CauseUnitId { get; set; }
@@ -194,18 +194,18 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// created_at
+    /// When the record was first created. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>created_at</value>
+    /// <value>When the record was first created. Use ISO 8601 datetime format</value>
     [DataMember(Name="created_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "created_at")]
     public DateTime? CreatedAt { get; set; }
 
     
     /// <summary>
-    /// updated_at
+    /// When the record in the database was last updated. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>updated_at</value>
+    /// <value>When the record in the database was last updated. Use ISO 8601 datetime format</value>
     [DataMember(Name="updated_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updated_at")]
     public DateTime? UpdatedAt { get; set; }

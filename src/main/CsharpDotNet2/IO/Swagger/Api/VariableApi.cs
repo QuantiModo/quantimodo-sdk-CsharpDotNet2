@@ -14,79 +14,81 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get all Variables Get all Variables
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="id">id</param>
-        /// <param name="clientId">client_id</param>
-        /// <param name="parentId">parent_id</param>
-        /// <param name="name">name</param>
-        /// <param name="variableCategoryId">variable_category_id</param>
-        /// <param name="defaultUnitId">default_unit_id</param>
-        /// <param name="combinationOperation">combination_operation</param>
-        /// <param name="fillingValue">filling_value</param>
-        /// <param name="maximumAllowedValue">maximum_allowed_value</param>
-        /// <param name="minimumAllowedValue">minimum_allowed_value</param>
-        /// <param name="onsetDelay">onset_delay</param>
-        /// <param name="durationOfAction">duration_of_action</param>
-        /// <param name="_public">public</param>
-        /// <param name="causeOnly">cause_only</param>
-        /// <param name="mostCommonValue">most_common_value</param>
-        /// <param name="mostCommonUnitId">most_common_unit_id</param>
-        /// <param name="standardDeviation">standard_deviation</param>
-        /// <param name="variance">variance</param>
-        /// <param name="mean">mean</param>
-        /// <param name="median">median</param>
-        /// <param name="numberOfMeasurements">number_of_measurements</param>
-        /// <param name="numberOfUniqueValues">number_of_unique_values</param>
-        /// <param name="skewness">skewness</param>
-        /// <param name="kurtosis">kurtosis</param>
-        /// <param name="latitude">latitude</param>
-        /// <param name="longitude">longitude</param>
-        /// <param name="location">location</param>
+        /// <param name="clientId">The ID of the client application which last created or updated this common variable</param>
+        /// <param name="parentId">ID of the parent variable if this variable has any parent</param>
+        /// <param name="name">User-defined variable display name</param>
+        /// <param name="variableCategoryId">Variable category ID</param>
+        /// <param name="defaultUnitId">ID of the default unit for the variable</param>
+        /// <param name="combinationOperation">How to combine values of this variable (for instance, to see a summary of the values over a month) SUM or MEAN</param>
+        /// <param name="fillingValue">Value for replacing null measurements</param>
+        /// <param name="maximumAllowedValue">Maximum reasonable value for this variable (uses default unit)</param>
+        /// <param name="minimumAllowedValue">Minimum reasonable value for this variable (uses default unit)</param>
+        /// <param name="onsetDelay">Estimated number of seconds that pass before a stimulus produces a perceivable effect</param>
+        /// <param name="durationOfAction">Estimated number of seconds following the onset delay in which a stimulus produces a perceivable effect</param>
+        /// <param name="_public">Is variable public</param>
+        /// <param name="causeOnly">A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user</param>
+        /// <param name="mostCommonValue">Most common value</param>
+        /// <param name="mostCommonUnitId">Most common Unit</param>
+        /// <param name="standardDeviation">Standard Deviation</param>
+        /// <param name="variance">Average variance for this variable based on all user data</param>
+        /// <param name="mean">Mean for this variable based on all user data</param>
+        /// <param name="median">Median for this variable based on all user data</param>
+        /// <param name="numberOfMeasurements">Number of measurements for this variable based on all user data</param>
+        /// <param name="numberOfUniqueValues">Number of unique values for this variable based on all user data</param>
+        /// <param name="skewness">Skewness for this variable based on all user data</param>
+        /// <param name="kurtosis">Kurtosis for this variable based on all user data</param>
         /// <param name="status">status</param>
         /// <param name="errorMessage">error_message</param>
-        /// <param name="lastSuccessfulUpdateTime">last_successful_update_time</param>
-        /// <param name="createdAt">created_at</param>
-        /// <param name="updatedAt">updated_at</param>
-        /// <param name="productUrl">product_url</param>
-        /// <param name="imageUrl">image_url</param>
-        /// <param name="price">price</param>
-        /// <param name="numberOfUserVariables">number_of_user_variables</param>
-        /// <param name="outcome">outcome</param>
-        /// <param name="minimumRecordedValue">minimum_recorded_value</param>
-        /// <param name="maximumRecordedValue">maximum_recorded_value</param>
-        /// <param name="limit">limit</param>
-        /// <param name="offset">offset</param>
-        /// <param name="sort">sort</param>
-        /// <returns>InlineResponse20027</returns>
-        InlineResponse20027 VariablesGet (int? id, string clientId, int? parentId, string name, int? variableCategoryId, int? defaultUnitId, string combinationOperation, double? fillingValue, double? maximumAllowedValue, double? minimumAllowedValue, int? onsetDelay, int? durationOfAction, int? _public, bool? causeOnly, double? mostCommonValue, int? mostCommonUnitId, double? standardDeviation, double? variance, double? mean, double? median, double? numberOfMeasurements, double? numberOfUniqueValues, double? skewness, double? kurtosis, double? latitude, double? longitude, string location, string status, string errorMessage, string lastSuccessfulUpdateTime, string createdAt, string updatedAt, string productUrl, string imageUrl, double? price, int? numberOfUserVariables, bool? outcome, double? minimumRecordedValue, double? maximumRecordedValue, int? limit, int? offset, string sort);
+        /// <param name="lastSuccessfulUpdateTime">When this variable or its settings were last updated</param>
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param>
+        /// <param name="updatedAt">When the record was last updated. Use ISO 8601 datetime format</param>
+        /// <param name="productUrl">Product URL</param>
+        /// <param name="imageUrl">Image URL</param>
+        /// <param name="price">Price</param>
+        /// <param name="numberOfUserVariables">Number of users who have data for this variable</param>
+        /// <param name="outcome">Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables.</param>
+        /// <param name="minimumRecordedValue">Minimum recorded value of this variable based on all user data</param>
+        /// <param name="maximumRecordedValue">Maximum recorded value of this variable based on all user data</param>
+        /// <param name="limit">The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</param>
+        /// <param name="offset">OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.</param>
+        /// <param name="sort">Sort records by a given field name. If the field name is prefixed with &#39;-&#39;, it will sort in descending order.</param>
+        /// <returns>InlineResponse20034</returns>
+        InlineResponse20034 VariablesGet (string accessToken, int? id, string clientId, int? parentId, string name, int? variableCategoryId, int? defaultUnitId, string combinationOperation, double? fillingValue, double? maximumAllowedValue, double? minimumAllowedValue, int? onsetDelay, int? durationOfAction, int? _public, bool? causeOnly, double? mostCommonValue, int? mostCommonUnitId, double? standardDeviation, double? variance, double? mean, double? median, double? numberOfMeasurements, double? numberOfUniqueValues, double? skewness, double? kurtosis, string status, string errorMessage, string lastSuccessfulUpdateTime, string createdAt, string updatedAt, string productUrl, string imageUrl, double? price, int? numberOfUserVariables, bool? outcome, double? minimumRecordedValue, double? maximumRecordedValue, int? limit, int? offset, string sort);
         
         /// <summary>
-        /// Store Variable Store Variable
+        /// Store Variable Allows the client to create a new variable in the `variables` table.
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Variable that should be stored</param>
-        /// <returns>InlineResponse20028</returns>
-        InlineResponse20028 VariablesPost (Variable body);
+        /// <returns>InlineResponse20035</returns>
+        InlineResponse20035 VariablesPost (string accessToken, Variable body);
         
         /// <summary>
         /// Get Variable Get Variable
         /// </summary>
         /// <param name="id">id of Variable</param>
-        /// <returns>InlineResponse20028</returns>
-        InlineResponse20028 VariablesIdGet (int? id);
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <returns>InlineResponse20035</returns>
+        InlineResponse20035 VariablesIdGet (int? id, string accessToken);
         
         /// <summary>
         /// Update Variable Update Variable
         /// </summary>
         /// <param name="id">id of Variable</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Variable that should be updated</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 VariablesIdPut (int? id, Variable body);
+        InlineResponse2002 VariablesIdPut (int? id, string accessToken, Variable body);
         
         /// <summary>
         /// Delete Variable Delete Variable
         /// </summary>
         /// <param name="id">id of Variable</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 VariablesIdDelete (int? id);
+        InlineResponse2002 VariablesIdDelete (int? id, string accessToken);
         
     }
   
@@ -147,50 +149,48 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get all Variables Get all Variables
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="id">id</param> 
-        /// <param name="clientId">client_id</param> 
-        /// <param name="parentId">parent_id</param> 
-        /// <param name="name">name</param> 
-        /// <param name="variableCategoryId">variable_category_id</param> 
-        /// <param name="defaultUnitId">default_unit_id</param> 
-        /// <param name="combinationOperation">combination_operation</param> 
-        /// <param name="fillingValue">filling_value</param> 
-        /// <param name="maximumAllowedValue">maximum_allowed_value</param> 
-        /// <param name="minimumAllowedValue">minimum_allowed_value</param> 
-        /// <param name="onsetDelay">onset_delay</param> 
-        /// <param name="durationOfAction">duration_of_action</param> 
-        /// <param name="_public">public</param> 
-        /// <param name="causeOnly">cause_only</param> 
-        /// <param name="mostCommonValue">most_common_value</param> 
-        /// <param name="mostCommonUnitId">most_common_unit_id</param> 
-        /// <param name="standardDeviation">standard_deviation</param> 
-        /// <param name="variance">variance</param> 
-        /// <param name="mean">mean</param> 
-        /// <param name="median">median</param> 
-        /// <param name="numberOfMeasurements">number_of_measurements</param> 
-        /// <param name="numberOfUniqueValues">number_of_unique_values</param> 
-        /// <param name="skewness">skewness</param> 
-        /// <param name="kurtosis">kurtosis</param> 
-        /// <param name="latitude">latitude</param> 
-        /// <param name="longitude">longitude</param> 
-        /// <param name="location">location</param> 
+        /// <param name="clientId">The ID of the client application which last created or updated this common variable</param> 
+        /// <param name="parentId">ID of the parent variable if this variable has any parent</param> 
+        /// <param name="name">User-defined variable display name</param> 
+        /// <param name="variableCategoryId">Variable category ID</param> 
+        /// <param name="defaultUnitId">ID of the default unit for the variable</param> 
+        /// <param name="combinationOperation">How to combine values of this variable (for instance, to see a summary of the values over a month) SUM or MEAN</param> 
+        /// <param name="fillingValue">Value for replacing null measurements</param> 
+        /// <param name="maximumAllowedValue">Maximum reasonable value for this variable (uses default unit)</param> 
+        /// <param name="minimumAllowedValue">Minimum reasonable value for this variable (uses default unit)</param> 
+        /// <param name="onsetDelay">Estimated number of seconds that pass before a stimulus produces a perceivable effect</param> 
+        /// <param name="durationOfAction">Estimated number of seconds following the onset delay in which a stimulus produces a perceivable effect</param> 
+        /// <param name="_public">Is variable public</param> 
+        /// <param name="causeOnly">A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user</param> 
+        /// <param name="mostCommonValue">Most common value</param> 
+        /// <param name="mostCommonUnitId">Most common Unit</param> 
+        /// <param name="standardDeviation">Standard Deviation</param> 
+        /// <param name="variance">Average variance for this variable based on all user data</param> 
+        /// <param name="mean">Mean for this variable based on all user data</param> 
+        /// <param name="median">Median for this variable based on all user data</param> 
+        /// <param name="numberOfMeasurements">Number of measurements for this variable based on all user data</param> 
+        /// <param name="numberOfUniqueValues">Number of unique values for this variable based on all user data</param> 
+        /// <param name="skewness">Skewness for this variable based on all user data</param> 
+        /// <param name="kurtosis">Kurtosis for this variable based on all user data</param> 
         /// <param name="status">status</param> 
         /// <param name="errorMessage">error_message</param> 
-        /// <param name="lastSuccessfulUpdateTime">last_successful_update_time</param> 
-        /// <param name="createdAt">created_at</param> 
-        /// <param name="updatedAt">updated_at</param> 
-        /// <param name="productUrl">product_url</param> 
-        /// <param name="imageUrl">image_url</param> 
-        /// <param name="price">price</param> 
-        /// <param name="numberOfUserVariables">number_of_user_variables</param> 
-        /// <param name="outcome">outcome</param> 
-        /// <param name="minimumRecordedValue">minimum_recorded_value</param> 
-        /// <param name="maximumRecordedValue">maximum_recorded_value</param> 
-        /// <param name="limit">limit</param> 
-        /// <param name="offset">offset</param> 
-        /// <param name="sort">sort</param> 
-        /// <returns>InlineResponse20027</returns>            
-        public InlineResponse20027 VariablesGet (int? id, string clientId, int? parentId, string name, int? variableCategoryId, int? defaultUnitId, string combinationOperation, double? fillingValue, double? maximumAllowedValue, double? minimumAllowedValue, int? onsetDelay, int? durationOfAction, int? _public, bool? causeOnly, double? mostCommonValue, int? mostCommonUnitId, double? standardDeviation, double? variance, double? mean, double? median, double? numberOfMeasurements, double? numberOfUniqueValues, double? skewness, double? kurtosis, double? latitude, double? longitude, string location, string status, string errorMessage, string lastSuccessfulUpdateTime, string createdAt, string updatedAt, string productUrl, string imageUrl, double? price, int? numberOfUserVariables, bool? outcome, double? minimumRecordedValue, double? maximumRecordedValue, int? limit, int? offset, string sort)
+        /// <param name="lastSuccessfulUpdateTime">When this variable or its settings were last updated</param> 
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param> 
+        /// <param name="updatedAt">When the record was last updated. Use ISO 8601 datetime format</param> 
+        /// <param name="productUrl">Product URL</param> 
+        /// <param name="imageUrl">Image URL</param> 
+        /// <param name="price">Price</param> 
+        /// <param name="numberOfUserVariables">Number of users who have data for this variable</param> 
+        /// <param name="outcome">Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables.</param> 
+        /// <param name="minimumRecordedValue">Minimum recorded value of this variable based on all user data</param> 
+        /// <param name="maximumRecordedValue">Maximum recorded value of this variable based on all user data</param> 
+        /// <param name="limit">The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</param> 
+        /// <param name="offset">OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.</param> 
+        /// <param name="sort">Sort records by a given field name. If the field name is prefixed with &#39;-&#39;, it will sort in descending order.</param> 
+        /// <returns>InlineResponse20034</returns>            
+        public InlineResponse20034 VariablesGet (string accessToken, int? id, string clientId, int? parentId, string name, int? variableCategoryId, int? defaultUnitId, string combinationOperation, double? fillingValue, double? maximumAllowedValue, double? minimumAllowedValue, int? onsetDelay, int? durationOfAction, int? _public, bool? causeOnly, double? mostCommonValue, int? mostCommonUnitId, double? standardDeviation, double? variance, double? mean, double? median, double? numberOfMeasurements, double? numberOfUniqueValues, double? skewness, double? kurtosis, string status, string errorMessage, string lastSuccessfulUpdateTime, string createdAt, string updatedAt, string productUrl, string imageUrl, double? price, int? numberOfUserVariables, bool? outcome, double? minimumRecordedValue, double? maximumRecordedValue, int? limit, int? offset, string sort)
         {
             
     
@@ -204,6 +204,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
              if (id != null) queryParams.Add("id", ApiClient.ParameterToString(id)); // query parameter
              if (clientId != null) queryParams.Add("client_id", ApiClient.ParameterToString(clientId)); // query parameter
              if (parentId != null) queryParams.Add("parent_id", ApiClient.ParameterToString(parentId)); // query parameter
@@ -228,9 +229,6 @@ namespace IO.Swagger.Api
              if (numberOfUniqueValues != null) queryParams.Add("number_of_unique_values", ApiClient.ParameterToString(numberOfUniqueValues)); // query parameter
              if (skewness != null) queryParams.Add("skewness", ApiClient.ParameterToString(skewness)); // query parameter
              if (kurtosis != null) queryParams.Add("kurtosis", ApiClient.ParameterToString(kurtosis)); // query parameter
-             if (latitude != null) queryParams.Add("latitude", ApiClient.ParameterToString(latitude)); // query parameter
-             if (longitude != null) queryParams.Add("longitude", ApiClient.ParameterToString(longitude)); // query parameter
-             if (location != null) queryParams.Add("location", ApiClient.ParameterToString(location)); // query parameter
              if (status != null) queryParams.Add("status", ApiClient.ParameterToString(status)); // query parameter
              if (errorMessage != null) queryParams.Add("error_message", ApiClient.ParameterToString(errorMessage)); // query parameter
              if (lastSuccessfulUpdateTime != null) queryParams.Add("last_successful_update_time", ApiClient.ParameterToString(lastSuccessfulUpdateTime)); // query parameter
@@ -252,7 +250,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -262,16 +260,17 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling VariablesGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20027) ApiClient.Deserialize(response.Content, typeof(InlineResponse20027), response.Headers);
+            return (InlineResponse20034) ApiClient.Deserialize(response.Content, typeof(InlineResponse20034), response.Headers);
         }
     
         
         /// <summary>
-        /// Store Variable Store Variable
+        /// Store Variable Allows the client to create a new variable in the `variables` table.
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Variable that should be stored</param> 
-        /// <returns>InlineResponse20028</returns>            
-        public InlineResponse20028 VariablesPost (Variable body)
+        /// <returns>InlineResponse20035</returns>            
+        public InlineResponse20035 VariablesPost (string accessToken, Variable body)
         {
             
     
@@ -285,6 +284,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -292,7 +292,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -302,7 +302,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling VariablesPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20028) ApiClient.Deserialize(response.Content, typeof(InlineResponse20028), response.Headers);
+            return (InlineResponse20035) ApiClient.Deserialize(response.Content, typeof(InlineResponse20035), response.Headers);
         }
     
         
@@ -310,8 +310,9 @@ namespace IO.Swagger.Api
         /// Get Variable Get Variable
         /// </summary>
         /// <param name="id">id of Variable</param> 
-        /// <returns>InlineResponse20028</returns>            
-        public InlineResponse20028 VariablesIdGet (int? id)
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <returns>InlineResponse20035</returns>            
+        public InlineResponse20035 VariablesIdGet (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -329,13 +330,14 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -345,7 +347,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling VariablesIdGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20028) ApiClient.Deserialize(response.Content, typeof(InlineResponse20028), response.Headers);
+            return (InlineResponse20035) ApiClient.Deserialize(response.Content, typeof(InlineResponse20035), response.Headers);
         }
     
         
@@ -353,9 +355,10 @@ namespace IO.Swagger.Api
         /// Update Variable Update Variable
         /// </summary>
         /// <param name="id">id of Variable</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Variable that should be updated</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 VariablesIdPut (int? id, Variable body)
+        public InlineResponse2002 VariablesIdPut (int? id, string accessToken, Variable body)
         {
             
             // verify the required parameter 'id' is set
@@ -373,6 +376,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -380,7 +384,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -398,8 +402,9 @@ namespace IO.Swagger.Api
         /// Delete Variable Delete Variable
         /// </summary>
         /// <param name="id">id of Variable</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 VariablesIdDelete (int? id)
+        public InlineResponse2002 VariablesIdDelete (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -417,13 +422,14 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);

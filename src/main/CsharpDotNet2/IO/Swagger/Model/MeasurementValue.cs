@@ -14,21 +14,30 @@ namespace IO.Swagger.Model {
   public class MeasurementValue {
     
     /// <summary>
-    /// start_time
+    /// When the measurement event occurred . Use ISO 8601 datetime format
     /// </summary>
-    /// <value>start_time</value>
+    /// <value>When the measurement event occurred . Use ISO 8601 datetime format</value>
     [DataMember(Name="start_time", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "start_time")]
-    public long? StartTime { get; set; }
+    public string StartTime { get; set; }
 
     
     /// <summary>
-    /// value
+    /// Value for the measurement
     /// </summary>
-    /// <value>value</value>
+    /// <value>Value for the measurement</value>
     [DataMember(Name="value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "value")]
     public float? Value { get; set; }
+
+    
+    /// <summary>
+    /// An optional note the user may include with their measurement
+    /// </summary>
+    /// <value>An optional note the user may include with their measurement</value>
+    [DataMember(Name="note", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "note")]
+    public string Note { get; set; }
 
     
 
@@ -43,6 +52,8 @@ namespace IO.Swagger.Model {
       sb.Append("  StartTime: ").Append(StartTime).Append("\n");
       
       sb.Append("  Value: ").Append(Value).Append("\n");
+      
+      sb.Append("  Note: ").Append(Note).Append("\n");
       
       sb.Append("}\n");
       return sb.ToString();

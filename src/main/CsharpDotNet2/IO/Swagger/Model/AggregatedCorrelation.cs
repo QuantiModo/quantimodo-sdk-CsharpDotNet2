@@ -23,228 +23,237 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// correlation
+    /// Pearson correlation coefficient between cause and effect measurements
     /// </summary>
-    /// <value>correlation</value>
+    /// <value>Pearson correlation coefficient between cause and effect measurements</value>
     [DataMember(Name="correlation", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "correlation")]
     public float? Correlation { get; set; }
 
     
     /// <summary>
-    /// cause_id
+    /// variable ID of the cause variable for which the user desires correlations
     /// </summary>
-    /// <value>cause_id</value>
+    /// <value>variable ID of the cause variable for which the user desires correlations</value>
     [DataMember(Name="cause_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "cause_id")]
     public int? CauseId { get; set; }
 
     
     /// <summary>
-    /// effect_id
+    /// variable ID of the effect variable for which the user desires correlations
     /// </summary>
-    /// <value>effect_id</value>
+    /// <value>variable ID of the effect variable for which the user desires correlations</value>
     [DataMember(Name="effect_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "effect_id")]
     public int? EffectId { get; set; }
 
     
     /// <summary>
-    /// onset_delay
+    /// User estimated or default time after cause measurement before a perceivable effect is observed
     /// </summary>
-    /// <value>onset_delay</value>
+    /// <value>User estimated or default time after cause measurement before a perceivable effect is observed</value>
     [DataMember(Name="onset_delay", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "onset_delay")]
     public int? OnsetDelay { get; set; }
 
     
     /// <summary>
-    /// duration_of_action
+    /// Time over which the cause is expected to produce a perceivable effect following the onset delay
     /// </summary>
-    /// <value>duration_of_action</value>
+    /// <value>Time over which the cause is expected to produce a perceivable effect following the onset delay</value>
     [DataMember(Name="duration_of_action", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "duration_of_action")]
     public int? DurationOfAction { get; set; }
 
     
     /// <summary>
-    /// number_of_pairs
+    /// Number of points that went into the correlation calculation
     /// </summary>
-    /// <value>number_of_pairs</value>
+    /// <value>Number of points that went into the correlation calculation</value>
     [DataMember(Name="number_of_pairs", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "number_of_pairs")]
     public int? NumberOfPairs { get; set; }
 
     
     /// <summary>
-    /// value_predicting_high_outcome
+    /// cause value that predicts an above average effect value (in default unit for cause variable)
     /// </summary>
-    /// <value>value_predicting_high_outcome</value>
+    /// <value>cause value that predicts an above average effect value (in default unit for cause variable)</value>
     [DataMember(Name="value_predicting_high_outcome", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "value_predicting_high_outcome")]
     public float? ValuePredictingHighOutcome { get; set; }
 
     
     /// <summary>
-    /// value_predicting_low_outcome
+    /// cause value that predicts a below average effect value (in default unit for cause variable)
     /// </summary>
-    /// <value>value_predicting_low_outcome</value>
+    /// <value>cause value that predicts a below average effect value (in default unit for cause variable)</value>
     [DataMember(Name="value_predicting_low_outcome", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "value_predicting_low_outcome")]
     public float? ValuePredictingLowOutcome { get; set; }
 
     
     /// <summary>
-    /// optimal_pearson_product
+    /// Optimal Pearson Product
     /// </summary>
-    /// <value>optimal_pearson_product</value>
+    /// <value>Optimal Pearson Product</value>
     [DataMember(Name="optimal_pearson_product", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "optimal_pearson_product")]
     public float? OptimalPearsonProduct { get; set; }
 
     
     /// <summary>
-    /// vote
+    /// Vote
     /// </summary>
-    /// <value>vote</value>
+    /// <value>Vote</value>
     [DataMember(Name="vote", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "vote")]
     public float? Vote { get; set; }
 
     
     /// <summary>
-    /// number_of_users
+    /// Number of Users by which correlation is aggregated
     /// </summary>
-    /// <value>number_of_users</value>
+    /// <value>Number of Users by which correlation is aggregated</value>
     [DataMember(Name="number_of_users", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "number_of_users")]
     public int? NumberOfUsers { get; set; }
 
     
     /// <summary>
-    /// number_of_correlations
+    /// Number of Correlations by which correlation is aggregated
     /// </summary>
-    /// <value>number_of_correlations</value>
+    /// <value>Number of Correlations by which correlation is aggregated</value>
     [DataMember(Name="number_of_correlations", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "number_of_correlations")]
     public int? NumberOfCorrelations { get; set; }
 
     
     /// <summary>
-    /// statistical_significance
+    /// A function of the effect size and sample size
     /// </summary>
-    /// <value>statistical_significance</value>
+    /// <value>A function of the effect size and sample size</value>
     [DataMember(Name="statistical_significance", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "statistical_significance")]
     public float? StatisticalSignificance { get; set; }
 
     
     /// <summary>
-    /// cause_unit
+    /// Unit of the predictor variable
     /// </summary>
-    /// <value>cause_unit</value>
+    /// <value>Unit of the predictor variable</value>
     [DataMember(Name="cause_unit", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "cause_unit")]
     public string CauseUnit { get; set; }
 
     
     /// <summary>
-    /// cause_unit_id
+    /// Unit ID of the predictor variable
     /// </summary>
-    /// <value>cause_unit_id</value>
+    /// <value>Unit ID of the predictor variable</value>
     [DataMember(Name="cause_unit_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "cause_unit_id")]
     public int? CauseUnitId { get; set; }
 
     
     /// <summary>
-    /// cause_changes
+    /// Cause changes
     /// </summary>
-    /// <value>cause_changes</value>
+    /// <value>Cause changes</value>
     [DataMember(Name="cause_changes", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "cause_changes")]
     public int? CauseChanges { get; set; }
 
     
     /// <summary>
-    /// effect_changes
+    /// Effect changes
     /// </summary>
-    /// <value>effect_changes</value>
+    /// <value>Effect changes</value>
     [DataMember(Name="effect_changes", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "effect_changes")]
     public int? EffectChanges { get; set; }
 
     
     /// <summary>
-    /// aggregate_qm_score
+    /// Aggregated QM Score
     /// </summary>
-    /// <value>aggregate_qm_score</value>
+    /// <value>Aggregated QM Score</value>
     [DataMember(Name="aggregate_qm_score", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "aggregate_qm_score")]
     public float? AggregateQmScore { get; set; }
 
     
     /// <summary>
-    /// created_at
+    /// When the record was first created. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>created_at</value>
+    /// <value>When the record was first created. Use ISO 8601 datetime format</value>
     [DataMember(Name="created_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "created_at")]
     public DateTime? CreatedAt { get; set; }
 
     
     /// <summary>
-    /// updated_at
+    /// When the record in the database was last updated. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>updated_at</value>
+    /// <value>When the record in the database was last updated. Use ISO 8601 datetime format</value>
     [DataMember(Name="updated_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updated_at")]
     public DateTime? UpdatedAt { get; set; }
 
     
     /// <summary>
-    /// status
+    /// Status
     /// </summary>
-    /// <value>status</value>
+    /// <value>Status</value>
     [DataMember(Name="status", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "status")]
     public string Status { get; set; }
 
     
     /// <summary>
-    /// error_message
+    /// Error Message
     /// </summary>
-    /// <value>error_message</value>
+    /// <value>Error Message</value>
     [DataMember(Name="error_message", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "error_message")]
     public string ErrorMessage { get; set; }
 
     
     /// <summary>
-    /// last_successful_update_time
+    /// Last Successful update time
     /// </summary>
-    /// <value>last_successful_update_time</value>
+    /// <value>Last Successful update time</value>
     [DataMember(Name="last_successful_update_time", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "last_successful_update_time")]
     public DateTime? LastSuccessfulUpdateTime { get; set; }
 
     
     /// <summary>
-    /// reverse_pearson_correlation_coefficient
+    /// Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation
     /// </summary>
-    /// <value>reverse_pearson_correlation_coefficient</value>
+    /// <value>Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation</value>
     [DataMember(Name="reverse_pearson_correlation_coefficient", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "reverse_pearson_correlation_coefficient")]
     public float? ReversePearsonCorrelationCoefficient { get; set; }
 
     
     /// <summary>
-    /// predictive_pearson_correlation_coefficient
+    /// Predictive Pearson Correlation Coefficient
     /// </summary>
-    /// <value>predictive_pearson_correlation_coefficient</value>
+    /// <value>Predictive Pearson Correlation Coefficient</value>
     [DataMember(Name="predictive_pearson_correlation_coefficient", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "predictive_pearson_correlation_coefficient")]
     public float? PredictivePearsonCorrelationCoefficient { get; set; }
+
+    
+    /// <summary>
+    /// Source of data for this correlation
+    /// </summary>
+    /// <value>Source of data for this correlation</value>
+    [DataMember(Name="data_source", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "data_source")]
+    public string DataSource { get; set; }
 
     
 
@@ -307,6 +316,8 @@ namespace IO.Swagger.Model {
       sb.Append("  ReversePearsonCorrelationCoefficient: ").Append(ReversePearsonCorrelationCoefficient).Append("\n");
       
       sb.Append("  PredictivePearsonCorrelationCoefficient: ").Append(PredictivePearsonCorrelationCoefficient).Append("\n");
+      
+      sb.Append("  DataSource: ").Append(DataSource).Append("\n");
       
       sb.Append("}\n");
       return sb.ToString();

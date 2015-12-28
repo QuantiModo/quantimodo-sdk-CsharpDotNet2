@@ -11,14 +11,14 @@ namespace IO.Swagger.Model {
   /// 
   /// </summary>
   [DataContract]
-  public class InlineResponse20018 {
+  public class InlineResponse20036 {
     
     /// <summary>
     /// Gets or Sets Data
     /// </summary>
     [DataMember(Name="data", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "data")]
-    public List<UserVariable> Data { get; set; }
+    public Vote Data { get; set; }
 
     
     /// <summary>
@@ -36,7 +36,7 @@ namespace IO.Swagger.Model {
     /// <returns>String presentation of the object</returns>
     public override string ToString()  {
       var sb = new StringBuilder();
-      sb.Append("class InlineResponse20018 {\n");
+      sb.Append("class InlineResponse20036 {\n");
       
       sb.Append("  Data: ").Append(Data).Append("\n");
       

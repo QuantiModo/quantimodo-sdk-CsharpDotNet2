@@ -14,65 +14,69 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get all AggregatedCorrelations Get all AggregatedCorrelations
         /// </summary>
-        /// <param name="correlation">correlation</param>
-        /// <param name="causeId">cause_id</param>
-        /// <param name="effectId">effect_id</param>
-        /// <param name="onsetDelay">onset_delay</param>
-        /// <param name="durationOfAction">duration_of_action</param>
-        /// <param name="numberOfPairs">number_of_pairs</param>
-        /// <param name="valuePredictingHighOutcome">value_predicting_high_outcome</param>
-        /// <param name="valuePredictingLowOutcome">value_predicting_low_outcome</param>
-        /// <param name="optimalPearsonProduct">optimal_pearson_product</param>
-        /// <param name="vote">vote</param>
-        /// <param name="numberOfUsers">number_of_users</param>
-        /// <param name="numberOfCorrelations">number_of_correlations</param>
-        /// <param name="statisticalSignificance">statistical_significance</param>
-        /// <param name="causeUnit">cause_unit</param>
-        /// <param name="causeUnitId">cause_unit_id</param>
-        /// <param name="causeChanges">cause_changes</param>
-        /// <param name="effectChanges">effect_changes</param>
-        /// <param name="aggregateQmScore">aggregate_qm_score</param>
-        /// <param name="createdAt">created_at</param>
-        /// <param name="updatedAt">updated_at</param>
-        /// <param name="status">status</param>
-        /// <param name="errorMessage">error_message</param>
-        /// <param name="lastSuccessfulUpdateTime">last_successful_update_time</param>
-        /// <param name="reversePearsonCorrelationCoefficient">reverse_pearson_correlation_coefficient</param>
-        /// <param name="predictivePearsonCorrelationCoefficient">predictive_pearson_correlation_coefficient</param>
-        /// <param name="limit">limit</param>
-        /// <param name="offset">offset</param>
-        /// <param name="sort">sort</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <param name="correlation">Pearson correlation coefficient between cause and effect measurements</param>
+        /// <param name="causeId">Variable ID of the predictor variable for which the user desires correlations</param>
+        /// <param name="effectId">Variable ID of the outcome variable for which the user desires correlations</param>
+        /// <param name="onsetDelay">User estimated (or default number of seconds) after cause measurement before a perceivable effect is observed</param>
+        /// <param name="durationOfAction">Number of seconds over which the predictor variable event is expected to produce a perceivable effect following the onset delay</param>
+        /// <param name="numberOfPairs">Number of predictor/outcome data points used in the analysis</param>
+        /// <param name="valuePredictingHighOutcome">Predictor daily aggregated measurement value that predicts an above average effect measurement value (in default unit for predictor variable)</param>
+        /// <param name="valuePredictingLowOutcome">Predictor daily aggregated measurement value that predicts a below average effect measurement value (in default unit for outcome variable)</param>
+        /// <param name="optimalPearsonProduct">Optimal Pearson Product</param>
+        /// <param name="numberOfUsers">Number of users whose data was used in this aggregation</param>
+        /// <param name="numberOfCorrelations">Number of correlational analyses used in this aggregation</param>
+        /// <param name="statisticalSignificance">A function of the effect size and sample size</param>
+        /// <param name="causeUnit">Abbreviated unit name for the predictor variable</param>
+        /// <param name="causeUnitId">Unit ID for the predictor variable</param>
+        /// <param name="causeChanges">Number of times that the predictor time series changes</param>
+        /// <param name="effectChanges">Number of times that the predictor time series changes</param>
+        /// <param name="aggregateQmScore">Aggregated QM Score which is directly proportional with the relevance of each predictor or outcome</param>
+        /// <param name="createdAt">Date at which the analysis was first performed</param>
+        /// <param name="updatedAt">Date at which the analysis was last updated</param>
+        /// <param name="status">Indicates whether an analysis is up to date (UPDATED), needs to be updated (WAITING), or had an error (ERROR)</param>
+        /// <param name="errorMessage">Message describing any problems encountered during the analysis</param>
+        /// <param name="lastSuccessfulUpdateTime">Last Successful update time</param>
+        /// <param name="reversePearsonCorrelationCoefficient">Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation</param>
+        /// <param name="predictivePearsonCorrelationCoefficient">Predictive Pearson Correlation Coefficient</param>
+        /// <param name="limit">Limit the number of results returned</param>
+        /// <param name="offset">Records from give Offset</param>
+        /// <param name="sort">Sort records by given field</param>
         /// <returns>InlineResponse200</returns>
-        InlineResponse200 AggregatedCorrelationsGet (double? correlation, int? causeId, int? effectId, int? onsetDelay, int? durationOfAction, int? numberOfPairs, double? valuePredictingHighOutcome, double? valuePredictingLowOutcome, double? optimalPearsonProduct, double? vote, int? numberOfUsers, int? numberOfCorrelations, double? statisticalSignificance, string causeUnit, int? causeUnitId, int? causeChanges, int? effectChanges, double? aggregateQmScore, string createdAt, string updatedAt, string status, string errorMessage, string lastSuccessfulUpdateTime, double? reversePearsonCorrelationCoefficient, double? predictivePearsonCorrelationCoefficient, int? limit, int? offset, string sort);
+        InlineResponse200 AggregatedCorrelationsGet (string accessToken, double? correlation, int? causeId, int? effectId, int? onsetDelay, int? durationOfAction, int? numberOfPairs, double? valuePredictingHighOutcome, double? valuePredictingLowOutcome, double? optimalPearsonProduct, int? numberOfUsers, int? numberOfCorrelations, double? statisticalSignificance, string causeUnit, int? causeUnitId, int? causeChanges, int? effectChanges, double? aggregateQmScore, string createdAt, string updatedAt, string status, string errorMessage, string lastSuccessfulUpdateTime, double? reversePearsonCorrelationCoefficient, double? predictivePearsonCorrelationCoefficient, int? limit, int? offset, string sort);
         
         /// <summary>
         /// Store AggregatedCorrelation Store AggregatedCorrelation
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">AggregatedCorrelation that should be stored</param>
         /// <returns>InlineResponse2001</returns>
-        InlineResponse2001 AggregatedCorrelationsPost (AggregatedCorrelation body);
+        InlineResponse2001 AggregatedCorrelationsPost (string accessToken, AggregatedCorrelation body);
         
         /// <summary>
         /// Get AggregatedCorrelation Get AggregatedCorrelation
         /// </summary>
         /// <param name="id">id of AggregatedCorrelation</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <returns>InlineResponse2001</returns>
-        InlineResponse2001 AggregatedCorrelationsIdGet (int? id);
+        InlineResponse2001 AggregatedCorrelationsIdGet (int? id, string accessToken);
         
         /// <summary>
         /// Update AggregatedCorrelation Update AggregatedCorrelation
         /// </summary>
         /// <param name="id">id of AggregatedCorrelation</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">AggregatedCorrelation that should be updated</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 AggregatedCorrelationsIdPut (int? id, AggregatedCorrelation body);
+        InlineResponse2002 AggregatedCorrelationsIdPut (int? id, string accessToken, AggregatedCorrelation body);
         
         /// <summary>
         /// Delete AggregatedCorrelation Delete AggregatedCorrelation
         /// </summary>
         /// <param name="id">id of AggregatedCorrelation</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 AggregatedCorrelationsIdDelete (int? id);
+        InlineResponse2002 AggregatedCorrelationsIdDelete (int? id, string accessToken);
         
     }
   
@@ -133,36 +137,36 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get all AggregatedCorrelations Get all AggregatedCorrelations
         /// </summary>
-        /// <param name="correlation">correlation</param> 
-        /// <param name="causeId">cause_id</param> 
-        /// <param name="effectId">effect_id</param> 
-        /// <param name="onsetDelay">onset_delay</param> 
-        /// <param name="durationOfAction">duration_of_action</param> 
-        /// <param name="numberOfPairs">number_of_pairs</param> 
-        /// <param name="valuePredictingHighOutcome">value_predicting_high_outcome</param> 
-        /// <param name="valuePredictingLowOutcome">value_predicting_low_outcome</param> 
-        /// <param name="optimalPearsonProduct">optimal_pearson_product</param> 
-        /// <param name="vote">vote</param> 
-        /// <param name="numberOfUsers">number_of_users</param> 
-        /// <param name="numberOfCorrelations">number_of_correlations</param> 
-        /// <param name="statisticalSignificance">statistical_significance</param> 
-        /// <param name="causeUnit">cause_unit</param> 
-        /// <param name="causeUnitId">cause_unit_id</param> 
-        /// <param name="causeChanges">cause_changes</param> 
-        /// <param name="effectChanges">effect_changes</param> 
-        /// <param name="aggregateQmScore">aggregate_qm_score</param> 
-        /// <param name="createdAt">created_at</param> 
-        /// <param name="updatedAt">updated_at</param> 
-        /// <param name="status">status</param> 
-        /// <param name="errorMessage">error_message</param> 
-        /// <param name="lastSuccessfulUpdateTime">last_successful_update_time</param> 
-        /// <param name="reversePearsonCorrelationCoefficient">reverse_pearson_correlation_coefficient</param> 
-        /// <param name="predictivePearsonCorrelationCoefficient">predictive_pearson_correlation_coefficient</param> 
-        /// <param name="limit">limit</param> 
-        /// <param name="offset">offset</param> 
-        /// <param name="sort">sort</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <param name="correlation">Pearson correlation coefficient between cause and effect measurements</param> 
+        /// <param name="causeId">Variable ID of the predictor variable for which the user desires correlations</param> 
+        /// <param name="effectId">Variable ID of the outcome variable for which the user desires correlations</param> 
+        /// <param name="onsetDelay">User estimated (or default number of seconds) after cause measurement before a perceivable effect is observed</param> 
+        /// <param name="durationOfAction">Number of seconds over which the predictor variable event is expected to produce a perceivable effect following the onset delay</param> 
+        /// <param name="numberOfPairs">Number of predictor/outcome data points used in the analysis</param> 
+        /// <param name="valuePredictingHighOutcome">Predictor daily aggregated measurement value that predicts an above average effect measurement value (in default unit for predictor variable)</param> 
+        /// <param name="valuePredictingLowOutcome">Predictor daily aggregated measurement value that predicts a below average effect measurement value (in default unit for outcome variable)</param> 
+        /// <param name="optimalPearsonProduct">Optimal Pearson Product</param> 
+        /// <param name="numberOfUsers">Number of users whose data was used in this aggregation</param> 
+        /// <param name="numberOfCorrelations">Number of correlational analyses used in this aggregation</param> 
+        /// <param name="statisticalSignificance">A function of the effect size and sample size</param> 
+        /// <param name="causeUnit">Abbreviated unit name for the predictor variable</param> 
+        /// <param name="causeUnitId">Unit ID for the predictor variable</param> 
+        /// <param name="causeChanges">Number of times that the predictor time series changes</param> 
+        /// <param name="effectChanges">Number of times that the predictor time series changes</param> 
+        /// <param name="aggregateQmScore">Aggregated QM Score which is directly proportional with the relevance of each predictor or outcome</param> 
+        /// <param name="createdAt">Date at which the analysis was first performed</param> 
+        /// <param name="updatedAt">Date at which the analysis was last updated</param> 
+        /// <param name="status">Indicates whether an analysis is up to date (UPDATED), needs to be updated (WAITING), or had an error (ERROR)</param> 
+        /// <param name="errorMessage">Message describing any problems encountered during the analysis</param> 
+        /// <param name="lastSuccessfulUpdateTime">Last Successful update time</param> 
+        /// <param name="reversePearsonCorrelationCoefficient">Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation</param> 
+        /// <param name="predictivePearsonCorrelationCoefficient">Predictive Pearson Correlation Coefficient</param> 
+        /// <param name="limit">Limit the number of results returned</param> 
+        /// <param name="offset">Records from give Offset</param> 
+        /// <param name="sort">Sort records by given field</param> 
         /// <returns>InlineResponse200</returns>            
-        public InlineResponse200 AggregatedCorrelationsGet (double? correlation, int? causeId, int? effectId, int? onsetDelay, int? durationOfAction, int? numberOfPairs, double? valuePredictingHighOutcome, double? valuePredictingLowOutcome, double? optimalPearsonProduct, double? vote, int? numberOfUsers, int? numberOfCorrelations, double? statisticalSignificance, string causeUnit, int? causeUnitId, int? causeChanges, int? effectChanges, double? aggregateQmScore, string createdAt, string updatedAt, string status, string errorMessage, string lastSuccessfulUpdateTime, double? reversePearsonCorrelationCoefficient, double? predictivePearsonCorrelationCoefficient, int? limit, int? offset, string sort)
+        public InlineResponse200 AggregatedCorrelationsGet (string accessToken, double? correlation, int? causeId, int? effectId, int? onsetDelay, int? durationOfAction, int? numberOfPairs, double? valuePredictingHighOutcome, double? valuePredictingLowOutcome, double? optimalPearsonProduct, int? numberOfUsers, int? numberOfCorrelations, double? statisticalSignificance, string causeUnit, int? causeUnitId, int? causeChanges, int? effectChanges, double? aggregateQmScore, string createdAt, string updatedAt, string status, string errorMessage, string lastSuccessfulUpdateTime, double? reversePearsonCorrelationCoefficient, double? predictivePearsonCorrelationCoefficient, int? limit, int? offset, string sort)
         {
             
     
@@ -176,6 +180,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
              if (correlation != null) queryParams.Add("correlation", ApiClient.ParameterToString(correlation)); // query parameter
              if (causeId != null) queryParams.Add("cause_id", ApiClient.ParameterToString(causeId)); // query parameter
              if (effectId != null) queryParams.Add("effect_id", ApiClient.ParameterToString(effectId)); // query parameter
@@ -185,7 +190,6 @@ namespace IO.Swagger.Api
              if (valuePredictingHighOutcome != null) queryParams.Add("value_predicting_high_outcome", ApiClient.ParameterToString(valuePredictingHighOutcome)); // query parameter
              if (valuePredictingLowOutcome != null) queryParams.Add("value_predicting_low_outcome", ApiClient.ParameterToString(valuePredictingLowOutcome)); // query parameter
              if (optimalPearsonProduct != null) queryParams.Add("optimal_pearson_product", ApiClient.ParameterToString(optimalPearsonProduct)); // query parameter
-             if (vote != null) queryParams.Add("vote", ApiClient.ParameterToString(vote)); // query parameter
              if (numberOfUsers != null) queryParams.Add("number_of_users", ApiClient.ParameterToString(numberOfUsers)); // query parameter
              if (numberOfCorrelations != null) queryParams.Add("number_of_correlations", ApiClient.ParameterToString(numberOfCorrelations)); // query parameter
              if (statisticalSignificance != null) queryParams.Add("statistical_significance", ApiClient.ParameterToString(statisticalSignificance)); // query parameter
@@ -210,7 +214,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -227,9 +231,10 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Store AggregatedCorrelation Store AggregatedCorrelation
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">AggregatedCorrelation that should be stored</param> 
         /// <returns>InlineResponse2001</returns>            
-        public InlineResponse2001 AggregatedCorrelationsPost (AggregatedCorrelation body)
+        public InlineResponse2001 AggregatedCorrelationsPost (string accessToken, AggregatedCorrelation body)
         {
             
     
@@ -243,6 +248,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -250,7 +256,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -268,8 +274,9 @@ namespace IO.Swagger.Api
         /// Get AggregatedCorrelation Get AggregatedCorrelation
         /// </summary>
         /// <param name="id">id of AggregatedCorrelation</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <returns>InlineResponse2001</returns>            
-        public InlineResponse2001 AggregatedCorrelationsIdGet (int? id)
+        public InlineResponse2001 AggregatedCorrelationsIdGet (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -287,13 +294,14 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -311,9 +319,10 @@ namespace IO.Swagger.Api
         /// Update AggregatedCorrelation Update AggregatedCorrelation
         /// </summary>
         /// <param name="id">id of AggregatedCorrelation</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">AggregatedCorrelation that should be updated</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 AggregatedCorrelationsIdPut (int? id, AggregatedCorrelation body)
+        public InlineResponse2002 AggregatedCorrelationsIdPut (int? id, string accessToken, AggregatedCorrelation body)
         {
             
             // verify the required parameter 'id' is set
@@ -331,6 +340,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -338,7 +348,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -356,8 +366,9 @@ namespace IO.Swagger.Api
         /// Delete AggregatedCorrelation Delete AggregatedCorrelation
         /// </summary>
         /// <param name="id">id of AggregatedCorrelation</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 AggregatedCorrelationsIdDelete (int? id)
+        public InlineResponse2002 AggregatedCorrelationsIdDelete (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -375,13 +386,14 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);

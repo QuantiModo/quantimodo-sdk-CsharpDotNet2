@@ -14,48 +14,54 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get all Credentials Get all Credentials
         /// </summary>
-        /// <param name="connectorId">connector_id</param>
-        /// <param name="attrKey">attr_key</param>
-        /// <param name="attrValue">attr_value</param>
-        /// <param name="createdAt">created_at</param>
-        /// <param name="updatedAt">updated_at</param>
-        /// <param name="limit">limit</param>
-        /// <param name="offset">offset</param>
-        /// <param name="sort">sort</param>
-        /// <returns>InlineResponse2009</returns>
-        InlineResponse2009 CredentialsGet (bool? connectorId, string attrKey, string attrValue, string createdAt, string updatedAt, int? limit, int? offset, string sort);
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <param name="userId">ID of user that owns this credential</param>
+        /// <param name="connectorId">The id for the connector data source from which the credential was obtained</param>
+        /// <param name="attrKey">Attribute name such as token, userid, username, or password</param>
+        /// <param name="attrValue">Encrypted value for the attribute specified</param>
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param>
+        /// <param name="updatedAt">When the record was last updated. Use ISO 8601 datetime format</param>
+        /// <param name="limit">The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</param>
+        /// <param name="offset">OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.</param>
+        /// <param name="sort">Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order.</param>
+        /// <returns>InlineResponse20011</returns>
+        InlineResponse20011 CredentialsGet (string accessToken, int? userId, int? connectorId, string attrKey, string attrValue, string createdAt, string updatedAt, int? limit, int? offset, string sort);
         
         /// <summary>
         /// Store Credential Store Credential
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Credential that should be stored</param>
-        /// <returns>InlineResponse20010</returns>
-        InlineResponse20010 CredentialsPost (Credential body);
+        /// <returns>InlineResponse20012</returns>
+        InlineResponse20012 CredentialsPost (string accessToken, Credential body);
         
         /// <summary>
         /// Get Credential Get Credential
         /// </summary>
         /// <param name="id">connector id</param>
         /// <param name="attrKey">attrKey</param>
-        /// <returns>InlineResponse20010</returns>
-        InlineResponse20010 CredentialsIdGet (int? id, string attrKey);
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <returns>InlineResponse20012</returns>
+        InlineResponse20012 CredentialsIdGet (int? id, string attrKey, string accessToken);
         
         /// <summary>
         /// Update Credential Update Credential
         /// </summary>
         /// <param name="id">connector id</param>
         /// <param name="attrKey">attrKey</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Credential that should be updated</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 CredentialsIdPut (int? id, string attrKey, Credential body);
+        InlineResponse2002 CredentialsIdPut (int? id, string attrKey, string accessToken, Credential body);
         
         /// <summary>
         /// Delete Credential Delete Credential
         /// </summary>
         /// <param name="id">connector id</param>
         /// <param name="attrKey">attrKey</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 CredentialsIdDelete (int? id, string attrKey);
+        InlineResponse2002 CredentialsIdDelete (int? id, string attrKey, string accessToken);
         
     }
   
@@ -116,16 +122,18 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Get all Credentials Get all Credentials
         /// </summary>
-        /// <param name="connectorId">connector_id</param> 
-        /// <param name="attrKey">attr_key</param> 
-        /// <param name="attrValue">attr_value</param> 
-        /// <param name="createdAt">created_at</param> 
-        /// <param name="updatedAt">updated_at</param> 
-        /// <param name="limit">limit</param> 
-        /// <param name="offset">offset</param> 
-        /// <param name="sort">sort</param> 
-        /// <returns>InlineResponse2009</returns>            
-        public InlineResponse2009 CredentialsGet (bool? connectorId, string attrKey, string attrValue, string createdAt, string updatedAt, int? limit, int? offset, string sort)
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <param name="userId">ID of user that owns this credential</param> 
+        /// <param name="connectorId">The id for the connector data source from which the credential was obtained</param> 
+        /// <param name="attrKey">Attribute name such as token, userid, username, or password</param> 
+        /// <param name="attrValue">Encrypted value for the attribute specified</param> 
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param> 
+        /// <param name="updatedAt">When the record was last updated. Use ISO 8601 datetime format</param> 
+        /// <param name="limit">The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</param> 
+        /// <param name="offset">OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.</param> 
+        /// <param name="sort">Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order.</param> 
+        /// <returns>InlineResponse20011</returns>            
+        public InlineResponse20011 CredentialsGet (string accessToken, int? userId, int? connectorId, string attrKey, string attrValue, string createdAt, string updatedAt, int? limit, int? offset, string sort)
         {
             
     
@@ -139,6 +147,8 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
+             if (userId != null) queryParams.Add("user_id", ApiClient.ParameterToString(userId)); // query parameter
              if (connectorId != null) queryParams.Add("connector_id", ApiClient.ParameterToString(connectorId)); // query parameter
              if (attrKey != null) queryParams.Add("attr_key", ApiClient.ParameterToString(attrKey)); // query parameter
              if (attrValue != null) queryParams.Add("attr_value", ApiClient.ParameterToString(attrValue)); // query parameter
@@ -153,7 +163,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -163,16 +173,17 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CredentialsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse2009) ApiClient.Deserialize(response.Content, typeof(InlineResponse2009), response.Headers);
+            return (InlineResponse20011) ApiClient.Deserialize(response.Content, typeof(InlineResponse20011), response.Headers);
         }
     
         
         /// <summary>
         /// Store Credential Store Credential
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Credential that should be stored</param> 
-        /// <returns>InlineResponse20010</returns>            
-        public InlineResponse20010 CredentialsPost (Credential body)
+        /// <returns>InlineResponse20012</returns>            
+        public InlineResponse20012 CredentialsPost (string accessToken, Credential body)
         {
             
     
@@ -186,6 +197,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -193,7 +205,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -203,7 +215,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CredentialsPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20010) ApiClient.Deserialize(response.Content, typeof(InlineResponse20010), response.Headers);
+            return (InlineResponse20012) ApiClient.Deserialize(response.Content, typeof(InlineResponse20012), response.Headers);
         }
     
         
@@ -212,8 +224,9 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="id">connector id</param> 
         /// <param name="attrKey">attrKey</param> 
-        /// <returns>InlineResponse20010</returns>            
-        public InlineResponse20010 CredentialsIdGet (int? id, string attrKey)
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <returns>InlineResponse20012</returns>            
+        public InlineResponse20012 CredentialsIdGet (int? id, string attrKey, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -234,6 +247,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
              if (attrKey != null) queryParams.Add("attrKey", ApiClient.ParameterToString(attrKey)); // query parameter
             
             
@@ -241,7 +255,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -251,7 +265,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CredentialsIdGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20010) ApiClient.Deserialize(response.Content, typeof(InlineResponse20010), response.Headers);
+            return (InlineResponse20012) ApiClient.Deserialize(response.Content, typeof(InlineResponse20012), response.Headers);
         }
     
         
@@ -260,9 +274,10 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="id">connector id</param> 
         /// <param name="attrKey">attrKey</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Credential that should be updated</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 CredentialsIdPut (int? id, string attrKey, Credential body)
+        public InlineResponse2002 CredentialsIdPut (int? id, string attrKey, string accessToken, Credential body)
         {
             
             // verify the required parameter 'id' is set
@@ -283,6 +298,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
              if (attrKey != null) queryParams.Add("attrKey", ApiClient.ParameterToString(attrKey)); // query parameter
             
             
@@ -291,7 +307,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -310,8 +326,9 @@ namespace IO.Swagger.Api
         /// </summary>
         /// <param name="id">connector id</param> 
         /// <param name="attrKey">attrKey</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 CredentialsIdDelete (int? id, string attrKey)
+        public InlineResponse2002 CredentialsIdDelete (int? id, string attrKey, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -332,6 +349,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
              if (attrKey != null) queryParams.Add("attrKey", ApiClient.ParameterToString(attrKey)); // query parameter
             
             
@@ -339,7 +357,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
