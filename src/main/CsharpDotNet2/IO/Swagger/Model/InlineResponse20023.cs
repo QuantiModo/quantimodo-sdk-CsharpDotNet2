@@ -18,7 +18,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="data", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "data")]
-    public List<VariableCategory> Data { get; set; }
+    public TrackingReminder Data { get; set; }
 
     
     /// <summary>

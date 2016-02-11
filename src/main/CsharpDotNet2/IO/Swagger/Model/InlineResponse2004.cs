@@ -18,7 +18,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="data", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "data")]
-    public Connection Data { get; set; }
+    public List<Credential> Data { get; set; }
 
     
     /// <summary>

@@ -41,9 +41,9 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// Connector ID
+    /// The id for the connector data source from which the measurement was obtained
     /// </summary>
-    /// <value>Connector ID</value>
+    /// <value>The id for the connector data source from which the measurement was obtained</value>
     [DataMember(Name="connector_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "connector_id")]
     public int? ConnectorId { get; set; }
@@ -68,36 +68,36 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// Start Time for the measurement event in ISO 8601
+    /// Start Time for the measurement event. Use ISO 8601
     /// </summary>
-    /// <value>Start Time for the measurement event in ISO 8601</value>
+    /// <value>Start Time for the measurement event. Use ISO 8601</value>
     [DataMember(Name="start_time", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "start_time")]
-    public int? StartTime { get; set; }
+    public string StartTime { get; set; }
 
     
     /// <summary>
-    /// Converted measurement value in requested unit
+    /// The value of the measurement after conversion to the default unit for that variable
     /// </summary>
-    /// <value>Converted measurement value in requested unit</value>
+    /// <value>The value of the measurement after conversion to the default unit for that variable</value>
     [DataMember(Name="value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "value")]
     public float? Value { get; set; }
 
     
     /// <summary>
-    /// Unit ID of measurement as requested in GET request
+    /// The default unit for the variable
     /// </summary>
-    /// <value>Unit ID of measurement as requested in GET request</value>
+    /// <value>The default unit for the variable</value>
     [DataMember(Name="unit_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "unit_id")]
     public int? UnitId { get; set; }
 
     
     /// <summary>
-    /// Original value
+    /// Value of measurement as originally posted (before conversion to default unit)
     /// </summary>
-    /// <value>Original value</value>
+    /// <value>Value of measurement as originally posted (before conversion to default unit)</value>
     [DataMember(Name="original_value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "original_value")]
     public float? OriginalValue { get; set; }
@@ -113,36 +113,36 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// duration of measurement in seconds
+    /// Duration of the event being measurement in seconds
     /// </summary>
-    /// <value>duration of measurement in seconds</value>
+    /// <value>Duration of the event being measurement in seconds</value>
     [DataMember(Name="duration", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "duration")]
     public int? Duration { get; set; }
 
     
     /// <summary>
-    /// Note of measurement
+    /// An optional note the user may include with their measurement
     /// </summary>
-    /// <value>Note of measurement</value>
+    /// <value>An optional note the user may include with their measurement</value>
     [DataMember(Name="note", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "note")]
     public string Note { get; set; }
 
     
     /// <summary>
-    /// latitude
+    /// Latitude at which the measurement was taken
     /// </summary>
-    /// <value>latitude</value>
+    /// <value>Latitude at which the measurement was taken</value>
     [DataMember(Name="latitude", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "latitude")]
     public float? Latitude { get; set; }
 
     
     /// <summary>
-    /// longitude
+    /// Longitude at which the measurement was taken
     /// </summary>
-    /// <value>longitude</value>
+    /// <value>Longitude at which the measurement was taken</value>
     [DataMember(Name="longitude", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "longitude")]
     public float? Longitude { get; set; }
@@ -158,18 +158,18 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// created_at
+    /// When the record was first created. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>created_at</value>
+    /// <value>When the record was first created. Use ISO 8601 datetime format</value>
     [DataMember(Name="created_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "created_at")]
     public DateTime? CreatedAt { get; set; }
 
     
     /// <summary>
-    /// updated_at
+    /// When the record in the database was last updated. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>updated_at</value>
+    /// <value>When the record in the database was last updated. Use ISO 8601 datetime format</value>
     [DataMember(Name="updated_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updated_at")]
     public DateTime? UpdatedAt { get; set; }

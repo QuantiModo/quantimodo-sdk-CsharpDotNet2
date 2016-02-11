@@ -14,27 +14,27 @@ namespace IO.Swagger.Model {
   public class MeasurementPost {
     
     /// <summary>
-    /// variable_id
+    /// ID of the variable for the measurement as obtained from the GET variables endpoint
     /// </summary>
-    /// <value>variable_id</value>
+    /// <value>ID of the variable for the measurement as obtained from the GET variables endpoint</value>
     [DataMember(Name="variable_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "variable_id")]
     public int? VariableId { get; set; }
 
     
     /// <summary>
-    /// source_id
+    /// Source ID of the app or device as obtained from the GET sources endpoint
     /// </summary>
-    /// <value>source_id</value>
+    /// <value>Source ID of the app or device as obtained from the GET sources endpoint</value>
     [DataMember(Name="source_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "source_id")]
     public int? SourceId { get; set; }
 
     
     /// <summary>
-    /// unit_id
+    /// Unit id for the measurement value as obtained from the GET units endpoint
     /// </summary>
-    /// <value>unit_id</value>
+    /// <value>Unit id for the measurement value as obtained from the GET units endpoint</value>
     [DataMember(Name="unit_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "unit_id")]
     public int? UnitId { get; set; }

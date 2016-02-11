@@ -8,53 +8,61 @@ using IO.Swagger.Model;
 namespace IO.Swagger.Api
 {
     
+    /// <summary>
+    /// Represents a collection of functions to interact with the API endpoints
+    /// </summary>
     public interface IVoteApi
     {
         
         /// <summary>
         /// Get all Votes Get all Votes
         /// </summary>
-        /// <param name="clientId">client_id</param>
-        /// <param name="userId">user_id</param>
-        /// <param name="causeId">cause_id</param>
-        /// <param name="effectId">effect_id</param>
-        /// <param name="value">value</param>
-        /// <param name="createdAt">created_at</param>
-        /// <param name="updatedAt">updated_at</param>
-        /// <param name="limit">limit</param>
-        /// <param name="offset">offset</param>
-        /// <param name="sort">sort</param>
-        /// <returns>InlineResponse20029</returns>
-        InlineResponse20029 VotesGet (string clientId, int? userId, int? causeId, int? effectId, int? value, string createdAt, string updatedAt, int? limit, int? offset, string sort);
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <param name="clientId">The ID of the client application which last created or updated this vote</param>
+        /// <param name="userId">ID of the user who voted</param>
+        /// <param name="causeId">ID of predictor variable</param>
+        /// <param name="effectId">ID of outcome variable</param>
+        /// <param name="value">Value of Vote. 1 is for upvote. 0 is for downvote.  Otherwise, there is no vote.</param>
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param>
+        /// <param name="updatedAt">When the record was last updated. Use ISO 8601 datetime format</param>
+        /// <param name="limit">The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</param>
+        /// <param name="offset">OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.</param>
+        /// <param name="sort">Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order.</param>
+        /// <returns>InlineResponse20011</returns>
+        InlineResponse20011 VotesGet (string accessToken, string clientId, int? userId, int? causeId, int? effectId, int? value, string createdAt, string updatedAt, int? limit, int? offset, string sort);
         
         /// <summary>
-        /// Store Vote Store Vote
+        /// Store Vote This is to enable users to indicate their opinion on the plausibility of a causal relationship between a treatment and outcome. QuantiModo incorporates crowd-sourced plausibility estimations into their algorithm. This is done allowing user to indicate their view of the plausibility of each relationship with thumbs up/down buttons placed next to each prediction.
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Vote that should be stored</param>
-        /// <returns>InlineResponse20030</returns>
-        InlineResponse20030 VotesPost (Vote body);
+        /// <returns>InlineResponse20036</returns>
+        InlineResponse20036 VotesPost (string accessToken, Vote body);
         
         /// <summary>
         /// Get Vote Get Vote
         /// </summary>
         /// <param name="id">id of Vote</param>
-        /// <returns>InlineResponse20030</returns>
-        InlineResponse20030 VotesIdGet (int? id);
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <returns>InlineResponse20036</returns>
+        InlineResponse20036 VotesIdGet (int? id, string accessToken);
         
         /// <summary>
         /// Update Vote Update Vote
         /// </summary>
         /// <param name="id">id of Vote</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Vote that should be updated</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 VotesIdPut (int? id, Vote body);
+        InlineResponse2002 VotesIdPut (int? id, string accessToken, Vote body);
         
         /// <summary>
-        /// Delete Vote Delete Vote
+        /// Delete Vote Delete previously posted vote
         /// </summary>
         /// <param name="id">id of Vote</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 VotesIdDelete (int? id);
+        InlineResponse2002 VotesIdDelete (int? id, string accessToken);
         
     }
   
@@ -108,25 +116,26 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Gets or sets the API client.
         /// </summary>
-        /// <value>An instance of the ApiClient</param>
+        /// <value>An instance of the ApiClient</value>
         public ApiClient ApiClient {get; set;}
     
         
         /// <summary>
         /// Get all Votes Get all Votes
         /// </summary>
-        /// <param name="clientId">client_id</param> 
-        /// <param name="userId">user_id</param> 
-        /// <param name="causeId">cause_id</param> 
-        /// <param name="effectId">effect_id</param> 
-        /// <param name="value">value</param> 
-        /// <param name="createdAt">created_at</param> 
-        /// <param name="updatedAt">updated_at</param> 
-        /// <param name="limit">limit</param> 
-        /// <param name="offset">offset</param> 
-        /// <param name="sort">sort</param> 
-        /// <returns>InlineResponse20029</returns>            
-        public InlineResponse20029 VotesGet (string clientId, int? userId, int? causeId, int? effectId, int? value, string createdAt, string updatedAt, int? limit, int? offset, string sort)
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <param name="clientId">The ID of the client application which last created or updated this vote</param> 
+        /// <param name="userId">ID of the user who voted</param> 
+        /// <param name="causeId">ID of predictor variable</param> 
+        /// <param name="effectId">ID of outcome variable</param> 
+        /// <param name="value">Value of Vote. 1 is for upvote. 0 is for downvote.  Otherwise, there is no vote.</param> 
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param> 
+        /// <param name="updatedAt">When the record was last updated. Use ISO 8601 datetime format</param> 
+        /// <param name="limit">The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</param> 
+        /// <param name="offset">OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.</param> 
+        /// <param name="sort">Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order.</param> 
+        /// <returns>InlineResponse20011</returns>            
+        public InlineResponse20011 VotesGet (string accessToken, string clientId, int? userId, int? causeId, int? effectId, int? value, string createdAt, string updatedAt, int? limit, int? offset, string sort)
         {
             
     
@@ -140,6 +149,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
              if (clientId != null) queryParams.Add("client_id", ApiClient.ParameterToString(clientId)); // query parameter
              if (userId != null) queryParams.Add("user_id", ApiClient.ParameterToString(userId)); // query parameter
              if (causeId != null) queryParams.Add("cause_id", ApiClient.ParameterToString(causeId)); // query parameter
@@ -156,7 +166,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -166,16 +176,17 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling VotesGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20029) ApiClient.Deserialize(response.Content, typeof(InlineResponse20029), response.Headers);
+            return (InlineResponse20011) ApiClient.Deserialize(response.Content, typeof(InlineResponse20011), response.Headers);
         }
     
         
         /// <summary>
-        /// Store Vote Store Vote
+        /// Store Vote This is to enable users to indicate their opinion on the plausibility of a causal relationship between a treatment and outcome. QuantiModo incorporates crowd-sourced plausibility estimations into their algorithm. This is done allowing user to indicate their view of the plausibility of each relationship with thumbs up/down buttons placed next to each prediction.
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Vote that should be stored</param> 
-        /// <returns>InlineResponse20030</returns>            
-        public InlineResponse20030 VotesPost (Vote body)
+        /// <returns>InlineResponse20036</returns>            
+        public InlineResponse20036 VotesPost (string accessToken, Vote body)
         {
             
     
@@ -189,6 +200,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -196,7 +208,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -206,7 +218,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling VotesPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20030) ApiClient.Deserialize(response.Content, typeof(InlineResponse20030), response.Headers);
+            return (InlineResponse20036) ApiClient.Deserialize(response.Content, typeof(InlineResponse20036), response.Headers);
         }
     
         
@@ -214,8 +226,9 @@ namespace IO.Swagger.Api
         /// Get Vote Get Vote
         /// </summary>
         /// <param name="id">id of Vote</param> 
-        /// <returns>InlineResponse20030</returns>            
-        public InlineResponse20030 VotesIdGet (int? id)
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <returns>InlineResponse20036</returns>            
+        public InlineResponse20036 VotesIdGet (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -233,13 +246,14 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -249,7 +263,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling VotesIdGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20030) ApiClient.Deserialize(response.Content, typeof(InlineResponse20030), response.Headers);
+            return (InlineResponse20036) ApiClient.Deserialize(response.Content, typeof(InlineResponse20036), response.Headers);
         }
     
         
@@ -257,9 +271,10 @@ namespace IO.Swagger.Api
         /// Update Vote Update Vote
         /// </summary>
         /// <param name="id">id of Vote</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Vote that should be updated</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 VotesIdPut (int? id, Vote body)
+        public InlineResponse2002 VotesIdPut (int? id, string accessToken, Vote body)
         {
             
             // verify the required parameter 'id' is set
@@ -277,6 +292,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -284,7 +300,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -299,11 +315,12 @@ namespace IO.Swagger.Api
     
         
         /// <summary>
-        /// Delete Vote Delete Vote
+        /// Delete Vote Delete previously posted vote
         /// </summary>
         /// <param name="id">id of Vote</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 VotesIdDelete (int? id)
+        public InlineResponse2002 VotesIdDelete (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -321,13 +338,14 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);

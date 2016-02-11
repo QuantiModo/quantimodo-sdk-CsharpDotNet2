@@ -23,6 +23,15 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
+    /// User ID
+    /// </summary>
+    /// <value>User ID</value>
+    [DataMember(Name="user_id", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "user_id")]
+    public int? UserId { get; set; }
+
+    
+    /// <summary>
     /// client_id
     /// </summary>
     /// <value>client_id</value>
@@ -275,12 +284,12 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// Minimum recorded daily value of this variable
+    /// Minimum recorded value of this variable
     /// </summary>
-    /// <value>Minimum recorded daily value of this variable</value>
-    [DataMember(Name="minimum_recorded_daily_value", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "minimum_recorded_daily_value")]
-    public float? MinimumRecordedDailyValue { get; set; }
+    /// <value>Minimum recorded value of this variable</value>
+    [DataMember(Name="minimum_recorded_value", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "minimum_recorded_value")]
+    public float? MinimumRecordedValue { get; set; }
 
     
     /// <summary>
@@ -392,18 +401,36 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// created_at
+    /// Earliest measurement start_time to be used in analysis. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>created_at</value>
+    /// <value>Earliest measurement start_time to be used in analysis. Use ISO 8601 datetime format</value>
+    [DataMember(Name="experiment_start_time", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "experiment_start_time")]
+    public DateTime? ExperimentStartTime { get; set; }
+
+    
+    /// <summary>
+    /// Latest measurement start_time to be used in analysis. Use ISO 8601 datetime format
+    /// </summary>
+    /// <value>Latest measurement start_time to be used in analysis. Use ISO 8601 datetime format</value>
+    [DataMember(Name="experiment_end_time", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "experiment_end_time")]
+    public DateTime? ExperimentEndTime { get; set; }
+
+    
+    /// <summary>
+    /// When the record was first created. Use ISO 8601 datetime format
+    /// </summary>
+    /// <value>When the record was first created. Use ISO 8601 datetime format</value>
     [DataMember(Name="created_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "created_at")]
     public DateTime? CreatedAt { get; set; }
 
     
     /// <summary>
-    /// updated_at
+    /// When the record in the database was last updated. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>updated_at</value>
+    /// <value>When the record in the database was last updated. Use ISO 8601 datetime format</value>
     [DataMember(Name="updated_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updated_at")]
     public DateTime? UpdatedAt { get; set; }
@@ -492,6 +519,8 @@ namespace IO.Swagger.Model {
       
       sb.Append("  ParentId: ").Append(ParentId).Append("\n");
       
+      sb.Append("  UserId: ").Append(UserId).Append("\n");
+      
       sb.Append("  ClientId: ").Append(ClientId).Append("\n");
       
       sb.Append("  VariableId: ").Append(VariableId).Append("\n");
@@ -548,7 +577,7 @@ namespace IO.Swagger.Model {
       
       sb.Append("  Variance: ").Append(Variance).Append("\n");
       
-      sb.Append("  MinimumRecordedDailyValue: ").Append(MinimumRecordedDailyValue).Append("\n");
+      sb.Append("  MinimumRecordedValue: ").Append(MinimumRecordedValue).Append("\n");
       
       sb.Append("  MaximumRecordedDailyValue: ").Append(MaximumRecordedDailyValue).Append("\n");
       
@@ -573,6 +602,10 @@ namespace IO.Swagger.Model {
       sb.Append("  Longitude: ").Append(Longitude).Append("\n");
       
       sb.Append("  Location: ").Append(Location).Append("\n");
+      
+      sb.Append("  ExperimentStartTime: ").Append(ExperimentStartTime).Append("\n");
+      
+      sb.Append("  ExperimentEndTime: ").Append(ExperimentEndTime).Append("\n");
       
       sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
       

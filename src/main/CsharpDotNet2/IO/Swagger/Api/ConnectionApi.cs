@@ -8,56 +8,64 @@ using IO.Swagger.Model;
 namespace IO.Swagger.Api
 {
     
+    /// <summary>
+    /// Represents a collection of functions to interact with the API endpoints
+    /// </summary>
     public interface IConnectionApi
     {
         
         /// <summary>
         /// Get all Connections Get all Connections
         /// </summary>
-        /// <param name="userId">user_id</param>
-        /// <param name="connectorId">connector_id</param>
-        /// <param name="connectStatus">connect_status</param>
-        /// <param name="connectError">connect_error</param>
-        /// <param name="updateRequestedAt">update_requested_at</param>
-        /// <param name="updateStatus">update_status</param>
-        /// <param name="updateError">update_error</param>
-        /// <param name="lastSuccessfulUpdatedAt">last_successful_updated_at</param>
-        /// <param name="createdAt">created_at</param>
-        /// <param name="updatedAt">updated_at</param>
-        /// <param name="limit">limit</param>
-        /// <param name="offset">offset</param>
-        /// <param name="sort">sort</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <param name="userId">ID of user that owns this correlation</param>
+        /// <param name="connectorId">The id for the connector data source for which the connection is connected</param>
+        /// <param name="connectStatus">Indicates whether a connector is currently connected to a service for a user.</param>
+        /// <param name="connectError">Error message if there is a problem with authorizing this connection.</param>
+        /// <param name="updateRequestedAt">Time at which an update was requested by a user.</param>
+        /// <param name="updateStatus">Indicates whether a connector is currently updated.</param>
+        /// <param name="updateError">Indicates if there was an error during the update.</param>
+        /// <param name="lastSuccessfulUpdatedAt">The time at which the connector was last successfully updated.</param>
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param>
+        /// <param name="updatedAt">When the record was last updated. Use ISO 8601 datetime format</param>
+        /// <param name="limit">The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</param>
+        /// <param name="offset">OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.</param>
+        /// <param name="sort">Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order.</param>
         /// <returns>InlineResponse2003</returns>
-        InlineResponse2003 ConnectionsGet (int? userId, int? connectorId, string connectStatus, string connectError, string updateRequestedAt, string updateStatus, string updateError, string lastSuccessfulUpdatedAt, string createdAt, string updatedAt, int? limit, int? offset, string sort);
+        InlineResponse2003 ConnectionsGet (string accessToken, int? userId, int? connectorId, string connectStatus, string connectError, string updateRequestedAt, string updateStatus, string updateError, string lastSuccessfulUpdatedAt, string createdAt, string updatedAt, int? limit, int? offset, string sort);
         
         /// <summary>
         /// Store Connection Store Connection
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Connection that should be stored</param>
-        /// <returns>InlineResponse2004</returns>
-        InlineResponse2004 ConnectionsPost (Connection body);
+        /// <returns>InlineResponse20014</returns>
+        InlineResponse20014 ConnectionsPost (string accessToken, Connection body);
         
         /// <summary>
         /// Get Connection Get Connection
         /// </summary>
         /// <param name="id">id of Connection</param>
-        /// <returns>InlineResponse2004</returns>
-        InlineResponse2004 ConnectionsIdGet (int? id);
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <returns>InlineResponse20014</returns>
+        InlineResponse20014 ConnectionsIdGet (int? id, string accessToken);
         
         /// <summary>
         /// Update Connection Update Connection
         /// </summary>
         /// <param name="id">id of Connection</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Connection that should be updated</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 ConnectionsIdPut (int? id, Connection body);
+        InlineResponse2002 ConnectionsIdPut (int? id, string accessToken, Connection body);
         
         /// <summary>
         /// Delete Connection Delete Connection
         /// </summary>
         /// <param name="id">id of Connection</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 ConnectionsIdDelete (int? id);
+        InlineResponse2002 ConnectionsIdDelete (int? id, string accessToken);
         
     }
   
@@ -111,28 +119,29 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Gets or sets the API client.
         /// </summary>
-        /// <value>An instance of the ApiClient</param>
+        /// <value>An instance of the ApiClient</value>
         public ApiClient ApiClient {get; set;}
     
         
         /// <summary>
         /// Get all Connections Get all Connections
         /// </summary>
-        /// <param name="userId">user_id</param> 
-        /// <param name="connectorId">connector_id</param> 
-        /// <param name="connectStatus">connect_status</param> 
-        /// <param name="connectError">connect_error</param> 
-        /// <param name="updateRequestedAt">update_requested_at</param> 
-        /// <param name="updateStatus">update_status</param> 
-        /// <param name="updateError">update_error</param> 
-        /// <param name="lastSuccessfulUpdatedAt">last_successful_updated_at</param> 
-        /// <param name="createdAt">created_at</param> 
-        /// <param name="updatedAt">updated_at</param> 
-        /// <param name="limit">limit</param> 
-        /// <param name="offset">offset</param> 
-        /// <param name="sort">sort</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <param name="userId">ID of user that owns this correlation</param> 
+        /// <param name="connectorId">The id for the connector data source for which the connection is connected</param> 
+        /// <param name="connectStatus">Indicates whether a connector is currently connected to a service for a user.</param> 
+        /// <param name="connectError">Error message if there is a problem with authorizing this connection.</param> 
+        /// <param name="updateRequestedAt">Time at which an update was requested by a user.</param> 
+        /// <param name="updateStatus">Indicates whether a connector is currently updated.</param> 
+        /// <param name="updateError">Indicates if there was an error during the update.</param> 
+        /// <param name="lastSuccessfulUpdatedAt">The time at which the connector was last successfully updated.</param> 
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param> 
+        /// <param name="updatedAt">When the record was last updated. Use ISO 8601 datetime format</param> 
+        /// <param name="limit">The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</param> 
+        /// <param name="offset">OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.</param> 
+        /// <param name="sort">Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order.</param> 
         /// <returns>InlineResponse2003</returns>            
-        public InlineResponse2003 ConnectionsGet (int? userId, int? connectorId, string connectStatus, string connectError, string updateRequestedAt, string updateStatus, string updateError, string lastSuccessfulUpdatedAt, string createdAt, string updatedAt, int? limit, int? offset, string sort)
+        public InlineResponse2003 ConnectionsGet (string accessToken, int? userId, int? connectorId, string connectStatus, string connectError, string updateRequestedAt, string updateStatus, string updateError, string lastSuccessfulUpdatedAt, string createdAt, string updatedAt, int? limit, int? offset, string sort)
         {
             
     
@@ -146,6 +155,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
              if (userId != null) queryParams.Add("user_id", ApiClient.ParameterToString(userId)); // query parameter
              if (connectorId != null) queryParams.Add("connector_id", ApiClient.ParameterToString(connectorId)); // query parameter
              if (connectStatus != null) queryParams.Add("connect_status", ApiClient.ParameterToString(connectStatus)); // query parameter
@@ -182,9 +192,10 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Store Connection Store Connection
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Connection that should be stored</param> 
-        /// <returns>InlineResponse2004</returns>            
-        public InlineResponse2004 ConnectionsPost (Connection body)
+        /// <returns>InlineResponse20014</returns>            
+        public InlineResponse20014 ConnectionsPost (string accessToken, Connection body)
         {
             
     
@@ -198,6 +209,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -215,7 +227,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ConnectionsPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse2004) ApiClient.Deserialize(response.Content, typeof(InlineResponse2004), response.Headers);
+            return (InlineResponse20014) ApiClient.Deserialize(response.Content, typeof(InlineResponse20014), response.Headers);
         }
     
         
@@ -223,8 +235,9 @@ namespace IO.Swagger.Api
         /// Get Connection Get Connection
         /// </summary>
         /// <param name="id">id of Connection</param> 
-        /// <returns>InlineResponse2004</returns>            
-        public InlineResponse2004 ConnectionsIdGet (int? id)
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <returns>InlineResponse20014</returns>            
+        public InlineResponse20014 ConnectionsIdGet (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -242,6 +255,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -258,7 +272,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling ConnectionsIdGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse2004) ApiClient.Deserialize(response.Content, typeof(InlineResponse2004), response.Headers);
+            return (InlineResponse20014) ApiClient.Deserialize(response.Content, typeof(InlineResponse20014), response.Headers);
         }
     
         
@@ -266,9 +280,10 @@ namespace IO.Swagger.Api
         /// Update Connection Update Connection
         /// </summary>
         /// <param name="id">id of Connection</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Connection that should be updated</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 ConnectionsIdPut (int? id, Connection body)
+        public InlineResponse2002 ConnectionsIdPut (int? id, string accessToken, Connection body)
         {
             
             // verify the required parameter 'id' is set
@@ -286,6 +301,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -311,8 +327,9 @@ namespace IO.Swagger.Api
         /// Delete Connection Delete Connection
         /// </summary>
         /// <param name="id">id of Connection</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 ConnectionsIdDelete (int? id)
+        public InlineResponse2002 ConnectionsIdDelete (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -330,6 +347,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             

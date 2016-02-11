@@ -8,50 +8,58 @@ using IO.Swagger.Model;
 namespace IO.Swagger.Api
 {
     
+    /// <summary>
+    /// Represents a collection of functions to interact with the API endpoints
+    /// </summary>
     public interface ISourceApi
     {
         
         /// <summary>
-        /// Get all Sources Get all Sources
+        /// Get measurement sources Returns a list of all the apps from which measurement data is obtained.
         /// </summary>
-        /// <param name="clientId">client_id</param>
-        /// <param name="name">name</param>
-        /// <param name="createdAt">created_at</param>
-        /// <param name="updatedAt">updated_at</param>
-        /// <param name="limit">limit</param>
-        /// <param name="offset">offset</param>
-        /// <param name="sort">sort</param>
-        /// <returns>InlineResponse20013</returns>
-        InlineResponse20013 SourcesGet (string clientId, string name, string createdAt, string updatedAt, int? limit, int? offset, string sort);
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <param name="clientId">The ID of the client application which last created or updated this source</param>
+        /// <param name="name">Name of the application or device</param>
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param>
+        /// <param name="updatedAt">When the record was last updated. Use ISO 8601 datetime format</param>
+        /// <param name="limit">The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</param>
+        /// <param name="offset">OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.</param>
+        /// <param name="sort">Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order.</param>
+        /// <returns>InlineResponse20021</returns>
+        InlineResponse20021 SourcesGet (string accessToken, string clientId, string name, string createdAt, string updatedAt, int? limit, int? offset, string sort);
         
         /// <summary>
-        /// Store Source Store Source
+        /// Add a data source Add a life-tracking app or device to the QuantiModo list of data sources.
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Source that should be stored</param>
-        /// <returns>InlineResponse20014</returns>
-        InlineResponse20014 SourcesPost (Source body);
+        /// <returns>InlineResponse20022</returns>
+        InlineResponse20022 SourcesPost (string accessToken, Source body);
         
         /// <summary>
         /// Get Source Get Source
         /// </summary>
         /// <param name="id">id of Source</param>
-        /// <returns>InlineResponse20014</returns>
-        InlineResponse20014 SourcesIdGet (int? id);
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <returns>InlineResponse20022</returns>
+        InlineResponse20022 SourcesIdGet (int? id, string accessToken);
         
         /// <summary>
         /// Update Source Update Source
         /// </summary>
         /// <param name="id">id of Source</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Source that should be updated</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 SourcesIdPut (int? id, Source body);
+        InlineResponse2002 SourcesIdPut (int? id, string accessToken, Source body);
         
         /// <summary>
         /// Delete Source Delete Source
         /// </summary>
         /// <param name="id">id of Source</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 SourcesIdDelete (int? id);
+        InlineResponse2002 SourcesIdDelete (int? id, string accessToken);
         
     }
   
@@ -105,22 +113,23 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Gets or sets the API client.
         /// </summary>
-        /// <value>An instance of the ApiClient</param>
+        /// <value>An instance of the ApiClient</value>
         public ApiClient ApiClient {get; set;}
     
         
         /// <summary>
-        /// Get all Sources Get all Sources
+        /// Get measurement sources Returns a list of all the apps from which measurement data is obtained.
         /// </summary>
-        /// <param name="clientId">client_id</param> 
-        /// <param name="name">name</param> 
-        /// <param name="createdAt">created_at</param> 
-        /// <param name="updatedAt">updated_at</param> 
-        /// <param name="limit">limit</param> 
-        /// <param name="offset">offset</param> 
-        /// <param name="sort">sort</param> 
-        /// <returns>InlineResponse20013</returns>            
-        public InlineResponse20013 SourcesGet (string clientId, string name, string createdAt, string updatedAt, int? limit, int? offset, string sort)
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <param name="clientId">The ID of the client application which last created or updated this source</param> 
+        /// <param name="name">Name of the application or device</param> 
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param> 
+        /// <param name="updatedAt">When the record was last updated. Use ISO 8601 datetime format</param> 
+        /// <param name="limit">The LIMIT is used to limit the number of results returned. So if you have 1000 results, but only want to the first 10, you would set this to 10 and offset to 0. The maximum limit is 200 records.</param> 
+        /// <param name="offset">OFFSET says to skip that many rows before beginning to return rows to the client. OFFSET 0 is the same as omitting the OFFSET clause. If both OFFSET and LIMIT appear, then OFFSET rows are skipped before starting to count the LIMIT rows that are returned.</param> 
+        /// <param name="sort">Sort by given field. If the field is prefixed with &#39;-&#39;, it will sort in descending order.</param> 
+        /// <returns>InlineResponse20021</returns>            
+        public InlineResponse20021 SourcesGet (string accessToken, string clientId, string name, string createdAt, string updatedAt, int? limit, int? offset, string sort)
         {
             
     
@@ -134,6 +143,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
              if (clientId != null) queryParams.Add("client_id", ApiClient.ParameterToString(clientId)); // query parameter
              if (name != null) queryParams.Add("name", ApiClient.ParameterToString(name)); // query parameter
              if (createdAt != null) queryParams.Add("created_at", ApiClient.ParameterToString(createdAt)); // query parameter
@@ -147,7 +157,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -157,16 +167,17 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SourcesGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20013) ApiClient.Deserialize(response.Content, typeof(InlineResponse20013), response.Headers);
+            return (InlineResponse20021) ApiClient.Deserialize(response.Content, typeof(InlineResponse20021), response.Headers);
         }
     
         
         /// <summary>
-        /// Store Source Store Source
+        /// Add a data source Add a life-tracking app or device to the QuantiModo list of data sources.
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Source that should be stored</param> 
-        /// <returns>InlineResponse20014</returns>            
-        public InlineResponse20014 SourcesPost (Source body)
+        /// <returns>InlineResponse20022</returns>            
+        public InlineResponse20022 SourcesPost (string accessToken, Source body)
         {
             
     
@@ -180,6 +191,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -187,7 +199,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -197,7 +209,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SourcesPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20014) ApiClient.Deserialize(response.Content, typeof(InlineResponse20014), response.Headers);
+            return (InlineResponse20022) ApiClient.Deserialize(response.Content, typeof(InlineResponse20022), response.Headers);
         }
     
         
@@ -205,8 +217,9 @@ namespace IO.Swagger.Api
         /// Get Source Get Source
         /// </summary>
         /// <param name="id">id of Source</param> 
-        /// <returns>InlineResponse20014</returns>            
-        public InlineResponse20014 SourcesIdGet (int? id)
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <returns>InlineResponse20022</returns>            
+        public InlineResponse20022 SourcesIdGet (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -224,13 +237,14 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -240,7 +254,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling SourcesIdGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse20014) ApiClient.Deserialize(response.Content, typeof(InlineResponse20014), response.Headers);
+            return (InlineResponse20022) ApiClient.Deserialize(response.Content, typeof(InlineResponse20022), response.Headers);
         }
     
         
@@ -248,9 +262,10 @@ namespace IO.Swagger.Api
         /// Update Source Update Source
         /// </summary>
         /// <param name="id">id of Source</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Source that should be updated</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 SourcesIdPut (int? id, Source body)
+        public InlineResponse2002 SourcesIdPut (int? id, string accessToken, Source body)
         {
             
             // verify the required parameter 'id' is set
@@ -268,6 +283,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -275,7 +291,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -293,8 +309,9 @@ namespace IO.Swagger.Api
         /// Delete Source Delete Source
         /// </summary>
         /// <param name="id">id of Source</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 SourcesIdDelete (int? id)
+        public InlineResponse2002 SourcesIdDelete (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -312,13 +329,14 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);

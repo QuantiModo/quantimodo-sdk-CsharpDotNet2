@@ -8,69 +8,77 @@ using IO.Swagger.Model;
 namespace IO.Swagger.Api
 {
     
+    /// <summary>
+    /// Represents a collection of functions to interact with the API endpoints
+    /// </summary>
     public interface ICorrelationApi
     {
         
         /// <summary>
         /// Get all Correlations Get all Correlations
         /// </summary>
-        /// <param name="timestamp">timestamp</param>
-        /// <param name="userId">user_id</param>
-        /// <param name="correlation">correlation</param>
-        /// <param name="causeId">cause_id</param>
-        /// <param name="effectId">effect_id</param>
-        /// <param name="onsetDelay">onset_delay</param>
-        /// <param name="durationOfAction">duration_of_action</param>
-        /// <param name="numberOfPairs">number_of_pairs</param>
-        /// <param name="valuePredictingHighOutcome">value_predicting_high_outcome</param>
-        /// <param name="valuePredictingLowOutcome">value_predicting_low_outcome</param>
-        /// <param name="optimalPearsonProduct">optimal_pearson_product</param>
-        /// <param name="vote">vote</param>
-        /// <param name="statisticalSignificance">statistical_significance</param>
-        /// <param name="causeUnit">cause_unit</param>
-        /// <param name="causeUnitId">cause_unit_id</param>
-        /// <param name="causeChanges">cause_changes</param>
-        /// <param name="effectChanges">effect_changes</param>
-        /// <param name="qmScore">qm_score</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <param name="timestamp">Time at which correlation was calculated</param>
+        /// <param name="userId">ID of user that owns this correlation</param>
+        /// <param name="correlation">Pearson correlation coefficient between cause and effect measurements</param>
+        /// <param name="causeId">variable ID of the predictor variable for which the user desires correlations</param>
+        /// <param name="effectId">variable ID of the outcome variable for which the user desires correlations</param>
+        /// <param name="onsetDelay">User estimated or default time after cause measurement before a perceivable effect is observed</param>
+        /// <param name="durationOfAction">Time over which the cause is expected to produce a perceivable effect following the onset delay</param>
+        /// <param name="numberOfPairs">Number of points that went into the correlation calculation</param>
+        /// <param name="valuePredictingHighOutcome">cause value that predicts an above average effect value (in default unit for predictor variable)</param>
+        /// <param name="valuePredictingLowOutcome">cause value that predicts a below average effect value (in default unit for predictor variable)</param>
+        /// <param name="optimalPearsonProduct">Optimal Pearson Product</param>
+        /// <param name="vote">Vote</param>
+        /// <param name="statisticalSignificance">A function of the effect size and sample size</param>
+        /// <param name="causeUnit">Unit of the predictor variable</param>
+        /// <param name="causeUnitId">Unit ID of the predictor variable</param>
+        /// <param name="causeChanges">Cause changes</param>
+        /// <param name="effectChanges">Effect changes</param>
+        /// <param name="qmScore">QM Score</param>
         /// <param name="error">error</param>
-        /// <param name="createdAt">created_at</param>
-        /// <param name="updatedAt">updated_at</param>
-        /// <param name="reversePearsonCorrelationCoefficient">reverse_pearson_correlation_coefficient</param>
-        /// <param name="predictivePearsonCorrelationCoefficient">predictive_pearson_correlation_coefficient</param>
-        /// <param name="limit">limit</param>
-        /// <param name="offset">offset</param>
-        /// <param name="sort">sort</param>
-        /// <returns>InlineResponse2007</returns>
-        InlineResponse2007 CorrelationsGet (int? timestamp, int? userId, double? correlation, int? causeId, int? effectId, int? onsetDelay, int? durationOfAction, int? numberOfPairs, double? valuePredictingHighOutcome, double? valuePredictingLowOutcome, double? optimalPearsonProduct, double? vote, double? statisticalSignificance, string causeUnit, int? causeUnitId, int? causeChanges, int? effectChanges, double? qmScore, string error, string createdAt, string updatedAt, double? reversePearsonCorrelationCoefficient, double? predictivePearsonCorrelationCoefficient, int? limit, int? offset, string sort);
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param>
+        /// <param name="updatedAt">When the record in the database was last updated. Use ISO 8601 datetime format</param>
+        /// <param name="reversePearsonCorrelationCoefficient">Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation</param>
+        /// <param name="predictivePearsonCorrelationCoefficient">Predictive Pearson Correlation Coefficient</param>
+        /// <param name="limit">Limit the number of results returned</param>
+        /// <param name="offset">Records from give Offset</param>
+        /// <param name="sort">Sort records by given field</param>
+        /// <returns>InlineResponse20017</returns>
+        InlineResponse20017 CorrelationsGet (string accessToken, int? timestamp, int? userId, double? correlation, int? causeId, int? effectId, int? onsetDelay, int? durationOfAction, int? numberOfPairs, double? valuePredictingHighOutcome, double? valuePredictingLowOutcome, double? optimalPearsonProduct, double? vote, double? statisticalSignificance, string causeUnit, int? causeUnitId, int? causeChanges, int? effectChanges, double? qmScore, string error, string createdAt, string updatedAt, double? reversePearsonCorrelationCoefficient, double? predictivePearsonCorrelationCoefficient, int? limit, int? offset, string sort);
         
         /// <summary>
         /// Store Correlation Store Correlation
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Correlation that should be stored</param>
-        /// <returns>InlineResponse2008</returns>
-        InlineResponse2008 CorrelationsPost (Correlation body);
+        /// <returns>InlineResponse20018</returns>
+        InlineResponse20018 CorrelationsPost (string accessToken, Correlation body);
         
         /// <summary>
-        /// Get Correlation Get Correlation
+        /// Get Correlation Details Get Correlation
         /// </summary>
         /// <param name="id">id of Correlation</param>
-        /// <returns>InlineResponse2008</returns>
-        InlineResponse2008 CorrelationsIdGet (int? id);
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
+        /// <returns>InlineResponse20018</returns>
+        InlineResponse20018 CorrelationsIdGet (int? id, string accessToken);
         
         /// <summary>
         /// Update Correlation Update Correlation
         /// </summary>
         /// <param name="id">id of Correlation</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <param name="body">Correlation that should be updated</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 CorrelationsIdPut (int? id, Correlation body);
+        InlineResponse2002 CorrelationsIdPut (int? id, string accessToken, Correlation body);
         
         /// <summary>
         /// Delete Correlation Delete Correlation
         /// </summary>
         /// <param name="id">id of Correlation</param>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param>
         /// <returns>InlineResponse2002</returns>
-        InlineResponse2002 CorrelationsIdDelete (int? id);
+        InlineResponse2002 CorrelationsIdDelete (int? id, string accessToken);
         
     }
   
@@ -124,41 +132,42 @@ namespace IO.Swagger.Api
         /// <summary>
         /// Gets or sets the API client.
         /// </summary>
-        /// <value>An instance of the ApiClient</param>
+        /// <value>An instance of the ApiClient</value>
         public ApiClient ApiClient {get; set;}
     
         
         /// <summary>
         /// Get all Correlations Get all Correlations
         /// </summary>
-        /// <param name="timestamp">timestamp</param> 
-        /// <param name="userId">user_id</param> 
-        /// <param name="correlation">correlation</param> 
-        /// <param name="causeId">cause_id</param> 
-        /// <param name="effectId">effect_id</param> 
-        /// <param name="onsetDelay">onset_delay</param> 
-        /// <param name="durationOfAction">duration_of_action</param> 
-        /// <param name="numberOfPairs">number_of_pairs</param> 
-        /// <param name="valuePredictingHighOutcome">value_predicting_high_outcome</param> 
-        /// <param name="valuePredictingLowOutcome">value_predicting_low_outcome</param> 
-        /// <param name="optimalPearsonProduct">optimal_pearson_product</param> 
-        /// <param name="vote">vote</param> 
-        /// <param name="statisticalSignificance">statistical_significance</param> 
-        /// <param name="causeUnit">cause_unit</param> 
-        /// <param name="causeUnitId">cause_unit_id</param> 
-        /// <param name="causeChanges">cause_changes</param> 
-        /// <param name="effectChanges">effect_changes</param> 
-        /// <param name="qmScore">qm_score</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <param name="timestamp">Time at which correlation was calculated</param> 
+        /// <param name="userId">ID of user that owns this correlation</param> 
+        /// <param name="correlation">Pearson correlation coefficient between cause and effect measurements</param> 
+        /// <param name="causeId">variable ID of the predictor variable for which the user desires correlations</param> 
+        /// <param name="effectId">variable ID of the outcome variable for which the user desires correlations</param> 
+        /// <param name="onsetDelay">User estimated or default time after cause measurement before a perceivable effect is observed</param> 
+        /// <param name="durationOfAction">Time over which the cause is expected to produce a perceivable effect following the onset delay</param> 
+        /// <param name="numberOfPairs">Number of points that went into the correlation calculation</param> 
+        /// <param name="valuePredictingHighOutcome">cause value that predicts an above average effect value (in default unit for predictor variable)</param> 
+        /// <param name="valuePredictingLowOutcome">cause value that predicts a below average effect value (in default unit for predictor variable)</param> 
+        /// <param name="optimalPearsonProduct">Optimal Pearson Product</param> 
+        /// <param name="vote">Vote</param> 
+        /// <param name="statisticalSignificance">A function of the effect size and sample size</param> 
+        /// <param name="causeUnit">Unit of the predictor variable</param> 
+        /// <param name="causeUnitId">Unit ID of the predictor variable</param> 
+        /// <param name="causeChanges">Cause changes</param> 
+        /// <param name="effectChanges">Effect changes</param> 
+        /// <param name="qmScore">QM Score</param> 
         /// <param name="error">error</param> 
-        /// <param name="createdAt">created_at</param> 
-        /// <param name="updatedAt">updated_at</param> 
-        /// <param name="reversePearsonCorrelationCoefficient">reverse_pearson_correlation_coefficient</param> 
-        /// <param name="predictivePearsonCorrelationCoefficient">predictive_pearson_correlation_coefficient</param> 
-        /// <param name="limit">limit</param> 
-        /// <param name="offset">offset</param> 
-        /// <param name="sort">sort</param> 
-        /// <returns>InlineResponse2007</returns>            
-        public InlineResponse2007 CorrelationsGet (int? timestamp, int? userId, double? correlation, int? causeId, int? effectId, int? onsetDelay, int? durationOfAction, int? numberOfPairs, double? valuePredictingHighOutcome, double? valuePredictingLowOutcome, double? optimalPearsonProduct, double? vote, double? statisticalSignificance, string causeUnit, int? causeUnitId, int? causeChanges, int? effectChanges, double? qmScore, string error, string createdAt, string updatedAt, double? reversePearsonCorrelationCoefficient, double? predictivePearsonCorrelationCoefficient, int? limit, int? offset, string sort)
+        /// <param name="createdAt">When the record was first created. Use ISO 8601 datetime format</param> 
+        /// <param name="updatedAt">When the record in the database was last updated. Use ISO 8601 datetime format</param> 
+        /// <param name="reversePearsonCorrelationCoefficient">Correlation when cause and effect are reversed. For any causal relationship, the forward correlation should exceed the reverse correlation</param> 
+        /// <param name="predictivePearsonCorrelationCoefficient">Predictive Pearson Correlation Coefficient</param> 
+        /// <param name="limit">Limit the number of results returned</param> 
+        /// <param name="offset">Records from give Offset</param> 
+        /// <param name="sort">Sort records by given field</param> 
+        /// <returns>InlineResponse20017</returns>            
+        public InlineResponse20017 CorrelationsGet (string accessToken, int? timestamp, int? userId, double? correlation, int? causeId, int? effectId, int? onsetDelay, int? durationOfAction, int? numberOfPairs, double? valuePredictingHighOutcome, double? valuePredictingLowOutcome, double? optimalPearsonProduct, double? vote, double? statisticalSignificance, string causeUnit, int? causeUnitId, int? causeChanges, int? effectChanges, double? qmScore, string error, string createdAt, string updatedAt, double? reversePearsonCorrelationCoefficient, double? predictivePearsonCorrelationCoefficient, int? limit, int? offset, string sort)
         {
             
     
@@ -172,6 +181,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
              if (timestamp != null) queryParams.Add("timestamp", ApiClient.ParameterToString(timestamp)); // query parameter
              if (userId != null) queryParams.Add("user_id", ApiClient.ParameterToString(userId)); // query parameter
              if (correlation != null) queryParams.Add("correlation", ApiClient.ParameterToString(correlation)); // query parameter
@@ -204,7 +214,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -214,16 +224,17 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CorrelationsGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse2007) ApiClient.Deserialize(response.Content, typeof(InlineResponse2007), response.Headers);
+            return (InlineResponse20017) ApiClient.Deserialize(response.Content, typeof(InlineResponse20017), response.Headers);
         }
     
         
         /// <summary>
         /// Store Correlation Store Correlation
         /// </summary>
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Correlation that should be stored</param> 
-        /// <returns>InlineResponse2008</returns>            
-        public InlineResponse2008 CorrelationsPost (Correlation body)
+        /// <returns>InlineResponse20018</returns>            
+        public InlineResponse20018 CorrelationsPost (string accessToken, Correlation body)
         {
             
     
@@ -237,6 +248,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -244,7 +256,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.POST, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -254,16 +266,17 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CorrelationsPost: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse2008) ApiClient.Deserialize(response.Content, typeof(InlineResponse2008), response.Headers);
+            return (InlineResponse20018) ApiClient.Deserialize(response.Content, typeof(InlineResponse20018), response.Headers);
         }
     
         
         /// <summary>
-        /// Get Correlation Get Correlation
+        /// Get Correlation Details Get Correlation
         /// </summary>
         /// <param name="id">id of Correlation</param> 
-        /// <returns>InlineResponse2008</returns>            
-        public InlineResponse2008 CorrelationsIdGet (int? id)
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
+        /// <returns>InlineResponse20018</returns>            
+        public InlineResponse20018 CorrelationsIdGet (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -281,13 +294,14 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.GET, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -297,7 +311,7 @@ namespace IO.Swagger.Api
             else if (((int)response.StatusCode) == 0)
                 throw new ApiException ((int)response.StatusCode, "Error calling CorrelationsIdGet: " + response.ErrorMessage, response.ErrorMessage);
     
-            return (InlineResponse2008) ApiClient.Deserialize(response.Content, typeof(InlineResponse2008), response.Headers);
+            return (InlineResponse20018) ApiClient.Deserialize(response.Content, typeof(InlineResponse20018), response.Headers);
         }
     
         
@@ -305,9 +319,10 @@ namespace IO.Swagger.Api
         /// Update Correlation Update Correlation
         /// </summary>
         /// <param name="id">id of Correlation</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <param name="body">Correlation that should be updated</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 CorrelationsIdPut (int? id, Correlation body)
+        public InlineResponse2002 CorrelationsIdPut (int? id, string accessToken, Correlation body)
         {
             
             // verify the required parameter 'id' is set
@@ -325,6 +340,7 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
@@ -332,7 +348,7 @@ namespace IO.Swagger.Api
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.PUT, queryParams, postBody, headerParams, formParams, fileParams, authSettings);
@@ -350,8 +366,9 @@ namespace IO.Swagger.Api
         /// Delete Correlation Delete Correlation
         /// </summary>
         /// <param name="id">id of Correlation</param> 
+        /// <param name="accessToken">User&#39;s OAuth2 access token</param> 
         /// <returns>InlineResponse2002</returns>            
-        public InlineResponse2002 CorrelationsIdDelete (int? id)
+        public InlineResponse2002 CorrelationsIdDelete (int? id, string accessToken)
         {
             
             // verify the required parameter 'id' is set
@@ -369,13 +386,14 @@ namespace IO.Swagger.Api
             var fileParams = new Dictionary<String, FileParameter>();
             String postBody = null;
     
+             if (accessToken != null) queryParams.Add("access_token", ApiClient.ParameterToString(accessToken)); // query parameter
             
             
             
             
     
             // authentication setting, if any
-            String[] authSettings = new String[] {  };
+            String[] authSettings = new String[] { "quantimodo_oauth2" };
     
             // make the HTTP request
             IRestResponse response = (IRestResponse) ApiClient.CallApi(path, Method.DELETE, queryParams, postBody, headerParams, formParams, fileParams, authSettings);

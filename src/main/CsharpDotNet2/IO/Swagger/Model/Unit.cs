@@ -59,18 +59,18 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// Unit minimum value
+    /// Minimum value permitted for this unit
     /// </summary>
-    /// <value>Unit minimum value</value>
+    /// <value>Minimum value permitted for this unit</value>
     [DataMember(Name="minimum_value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "minimum_value")]
     public float? MinimumValue { get; set; }
 
     
     /// <summary>
-    /// Unit maximum value
+    /// Maximum value permitted for this unit
     /// </summary>
-    /// <value>Unit maximum value</value>
+    /// <value>Maximum value permitted for this unit</value>
     [DataMember(Name="maximum_value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "maximum_value")]
     public float? MaximumValue { get; set; }
@@ -86,18 +86,18 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// ID of default unit
+    /// ID of default unit for this units category
     /// </summary>
-    /// <value>ID of default unit</value>
+    /// <value>ID of default unit for this units category</value>
     [DataMember(Name="default_unit_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "default_unit_id")]
     public int? DefaultUnitId { get; set; }
 
     
     /// <summary>
-    /// Value multiplied to
+    /// Value multiplied to convert to default unit in this unit category
     /// </summary>
-    /// <value>Value multiplied to</value>
+    /// <value>Value multiplied to convert to default unit in this unit category</value>
     [DataMember(Name="multiply", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "multiply")]
     public float? Multiply { get; set; }
@@ -113,18 +113,18 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// created_at
+    /// When the record was first created. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>created_at</value>
+    /// <value>When the record was first created. Use ISO 8601 datetime format</value>
     [DataMember(Name="created_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "created_at")]
     public DateTime? CreatedAt { get; set; }
 
     
     /// <summary>
-    /// updated_at
+    /// When the record in the database was last updated. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>updated_at</value>
+    /// <value>When the record in the database was last updated. Use ISO 8601 datetime format</value>
     [DataMember(Name="updated_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updated_at")]
     public DateTime? UpdatedAt { get; set; }

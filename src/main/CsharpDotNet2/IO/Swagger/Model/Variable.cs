@@ -32,27 +32,27 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// parent_id
+    /// ID of the parent variable if this variable has any parent
     /// </summary>
-    /// <value>parent_id</value>
+    /// <value>ID of the parent variable if this variable has any parent</value>
     [DataMember(Name="parent_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "parent_id")]
     public int? ParentId { get; set; }
 
     
     /// <summary>
-    /// Name of the variable
+    /// User-defined variable display name
     /// </summary>
-    /// <value>Name of the variable</value>
+    /// <value>User-defined variable display name</value>
     [DataMember(Name="name", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "name")]
     public string Name { get; set; }
 
     
     /// <summary>
-    /// Category of the variable
+    /// Variable category ID
     /// </summary>
-    /// <value>Category of the variable</value>
+    /// <value>Variable category ID</value>
     [DataMember(Name="variable_category_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "variable_category_id")]
     public int? VariableCategoryId { get; set; }
@@ -68,162 +68,162 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean
+    /// How to combine values of this variable (for instance, to see a summary of the values over a month) SUM or MEAN
     /// </summary>
-    /// <value>How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean</value>
+    /// <value>How to combine values of this variable (for instance, to see a summary of the values over a month) SUM or MEAN</value>
     [DataMember(Name="combination_operation", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "combination_operation")]
     public string CombinationOperation { get; set; }
 
     
     /// <summary>
-    /// filling_value
+    /// Value for replacing null measurements
     /// </summary>
-    /// <value>filling_value</value>
+    /// <value>Value for replacing null measurements</value>
     [DataMember(Name="filling_value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "filling_value")]
     public float? FillingValue { get; set; }
 
     
     /// <summary>
-    /// maximum_allowed_value
+    /// Maximum reasonable value for this variable (uses default unit)
     /// </summary>
-    /// <value>maximum_allowed_value</value>
+    /// <value>Maximum reasonable value for this variable (uses default unit)</value>
     [DataMember(Name="maximum_allowed_value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "maximum_allowed_value")]
     public float? MaximumAllowedValue { get; set; }
 
     
     /// <summary>
-    /// minimum_allowed_value
+    /// Minimum reasonable value for this variable (uses default unit)
     /// </summary>
-    /// <value>minimum_allowed_value</value>
+    /// <value>Minimum reasonable value for this variable (uses default unit)</value>
     [DataMember(Name="minimum_allowed_value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "minimum_allowed_value")]
     public float? MinimumAllowedValue { get; set; }
 
     
     /// <summary>
-    /// onset_delay
+    /// How long it takes for a measurement in this variable to take effect
     /// </summary>
-    /// <value>onset_delay</value>
+    /// <value>How long it takes for a measurement in this variable to take effect</value>
     [DataMember(Name="onset_delay", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "onset_delay")]
     public int? OnsetDelay { get; set; }
 
     
     /// <summary>
-    /// duration_of_action
+    /// How long the effect of a measurement in this variable lasts
     /// </summary>
-    /// <value>duration_of_action</value>
+    /// <value>How long the effect of a measurement in this variable lasts</value>
     [DataMember(Name="duration_of_action", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "duration_of_action")]
     public int? DurationOfAction { get; set; }
 
     
     /// <summary>
-    /// public
+    /// Is variable public
     /// </summary>
-    /// <value>public</value>
+    /// <value>Is variable public</value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
     public int? Public { get; set; }
 
     
     /// <summary>
-    /// cause_only
+    /// A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user
     /// </summary>
-    /// <value>cause_only</value>
+    /// <value>A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user</value>
     [DataMember(Name="cause_only", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "cause_only")]
     public bool? CauseOnly { get; set; }
 
     
     /// <summary>
-    /// most_common_value
+    /// Most common value
     /// </summary>
-    /// <value>most_common_value</value>
+    /// <value>Most common value</value>
     [DataMember(Name="most_common_value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "most_common_value")]
     public float? MostCommonValue { get; set; }
 
     
     /// <summary>
-    /// most_common_unit_id
+    /// Most common Unit
     /// </summary>
-    /// <value>most_common_unit_id</value>
+    /// <value>Most common Unit</value>
     [DataMember(Name="most_common_unit_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "most_common_unit_id")]
     public int? MostCommonUnitId { get; set; }
 
     
     /// <summary>
-    /// standard_deviation
+    /// Standard Deviation
     /// </summary>
-    /// <value>standard_deviation</value>
+    /// <value>Standard Deviation</value>
     [DataMember(Name="standard_deviation", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "standard_deviation")]
     public float? StandardDeviation { get; set; }
 
     
     /// <summary>
-    /// variance
+    /// Variance
     /// </summary>
-    /// <value>variance</value>
+    /// <value>Variance</value>
     [DataMember(Name="variance", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "variance")]
     public float? Variance { get; set; }
 
     
     /// <summary>
-    /// mean
+    /// Mean
     /// </summary>
-    /// <value>mean</value>
+    /// <value>Mean</value>
     [DataMember(Name="mean", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "mean")]
     public float? Mean { get; set; }
 
     
     /// <summary>
-    /// median
+    /// Median
     /// </summary>
-    /// <value>median</value>
+    /// <value>Median</value>
     [DataMember(Name="median", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "median")]
     public float? Median { get; set; }
 
     
     /// <summary>
-    /// number_of_measurements
+    /// Number of measurements
     /// </summary>
-    /// <value>number_of_measurements</value>
+    /// <value>Number of measurements</value>
     [DataMember(Name="number_of_measurements", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "number_of_measurements")]
     public float? NumberOfMeasurements { get; set; }
 
     
     /// <summary>
-    /// number_of_unique_values
+    /// Number of unique values
     /// </summary>
-    /// <value>number_of_unique_values</value>
+    /// <value>Number of unique values</value>
     [DataMember(Name="number_of_unique_values", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "number_of_unique_values")]
     public float? NumberOfUniqueValues { get; set; }
 
     
     /// <summary>
-    /// skewness
+    /// Skewness
     /// </summary>
-    /// <value>skewness</value>
+    /// <value>Skewness</value>
     [DataMember(Name="skewness", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "skewness")]
     public float? Skewness { get; set; }
 
     
     /// <summary>
-    /// kurtosis
+    /// Kurtosis
     /// </summary>
-    /// <value>kurtosis</value>
+    /// <value>Kurtosis</value>
     [DataMember(Name="kurtosis", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "kurtosis")]
     public float? Kurtosis { get; set; }
@@ -248,90 +248,90 @@ namespace IO.Swagger.Model {
 
     
     /// <summary>
-    /// last_successful_update_time
+    /// When this variable or its settings were last updated
     /// </summary>
-    /// <value>last_successful_update_time</value>
+    /// <value>When this variable or its settings were last updated</value>
     [DataMember(Name="last_successful_update_time", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "last_successful_update_time")]
     public DateTime? LastSuccessfulUpdateTime { get; set; }
 
     
     /// <summary>
-    /// created_at
+    /// When the record was first created. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>created_at</value>
+    /// <value>When the record was first created. Use ISO 8601 datetime format</value>
     [DataMember(Name="created_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "created_at")]
     public DateTime? CreatedAt { get; set; }
 
     
     /// <summary>
-    /// updated_at
+    /// When the record in the database was last updated. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>updated_at</value>
+    /// <value>When the record in the database was last updated. Use ISO 8601 datetime format</value>
     [DataMember(Name="updated_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updated_at")]
     public DateTime? UpdatedAt { get; set; }
 
     
     /// <summary>
-    /// product_url
+    /// Product URL
     /// </summary>
-    /// <value>product_url</value>
+    /// <value>Product URL</value>
     [DataMember(Name="product_url", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "product_url")]
     public string ProductUrl { get; set; }
 
     
     /// <summary>
-    /// image_url
+    /// Image URL
     /// </summary>
-    /// <value>image_url</value>
+    /// <value>Image URL</value>
     [DataMember(Name="image_url", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "image_url")]
     public string ImageUrl { get; set; }
 
     
     /// <summary>
-    /// price
+    /// Price
     /// </summary>
-    /// <value>price</value>
+    /// <value>Price</value>
     [DataMember(Name="price", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "price")]
     public float? Price { get; set; }
 
     
     /// <summary>
-    /// number_of_user_variables
+    /// Number of variables
     /// </summary>
-    /// <value>number_of_user_variables</value>
+    /// <value>Number of variables</value>
     [DataMember(Name="number_of_user_variables", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "number_of_user_variables")]
     public int? NumberOfUserVariables { get; set; }
 
     
     /// <summary>
-    /// outcome
+    /// Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables.
     /// </summary>
-    /// <value>outcome</value>
+    /// <value>Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables.</value>
     [DataMember(Name="outcome", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "outcome")]
     public bool? Outcome { get; set; }
 
     
     /// <summary>
-    /// minimum_recorded_value
+    /// Minimum recorded value of this variable
     /// </summary>
-    /// <value>minimum_recorded_value</value>
+    /// <value>Minimum recorded value of this variable</value>
     [DataMember(Name="minimum_recorded_value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "minimum_recorded_value")]
     public float? MinimumRecordedValue { get; set; }
 
     
     /// <summary>
-    /// maximum_recorded_value
+    /// Maximum recorded value of this variable
     /// </summary>
-    /// <value>maximum_recorded_value</value>
+    /// <value>Maximum recorded value of this variable</value>
     [DataMember(Name="maximum_recorded_value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "maximum_recorded_value")]
     public float? MaximumRecordedValue { get; set; }

@@ -18,7 +18,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="data", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "data")]
-    public List<Measurement> Data { get; set; }
+    public List<Vote> Data { get; set; }
 
     
     /// <summary>

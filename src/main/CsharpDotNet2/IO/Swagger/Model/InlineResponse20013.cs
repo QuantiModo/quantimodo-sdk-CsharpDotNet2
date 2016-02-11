@@ -18,7 +18,7 @@ namespace IO.Swagger.Model {
     /// </summary>
     [DataMember(Name="data", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "data")]
-    public List<Source> Data { get; set; }
+    public CommonVariableRelationship Data { get; set; }
 
     
     /// <summary>
