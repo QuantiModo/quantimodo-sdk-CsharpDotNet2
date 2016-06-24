@@ -12,7 +12,6 @@ namespace IO.Swagger.Model {
   /// </summary>
   [DataContract]
   public class Update {
-    
     /// <summary>
     /// id
     /// </summary>
@@ -21,7 +20,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "id")]
     public int? Id { get; set; }
 
-    
     /// <summary>
     /// user_id
     /// </summary>
@@ -30,7 +28,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "user_id")]
     public int? UserId { get; set; }
 
-    
     /// <summary>
     /// connector_id
     /// </summary>
@@ -39,7 +36,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "connector_id")]
     public int? ConnectorId { get; set; }
 
-    
     /// <summary>
     /// number_of_measurements
     /// </summary>
@@ -48,7 +44,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "number_of_measurements")]
     public int? NumberOfMeasurements { get; set; }
 
-    
     /// <summary>
     /// success
     /// </summary>
@@ -57,7 +52,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "success")]
     public bool? Success { get; set; }
 
-    
     /// <summary>
     /// message
     /// </summary>
@@ -66,25 +60,22 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "message")]
     public string Message { get; set; }
 
-    
     /// <summary>
-    /// created_at
+    /// When the record was first created. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>created_at</value>
+    /// <value>When the record was first created. Use ISO 8601 datetime format</value>
     [DataMember(Name="created_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "created_at")]
     public DateTime? CreatedAt { get; set; }
 
-    
     /// <summary>
-    /// updated_at
+    /// When the record in the database was last updated. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>updated_at</value>
+    /// <value>When the record in the database was last updated. Use ISO 8601 datetime format</value>
     [DataMember(Name="updated_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updated_at")]
     public DateTime? UpdatedAt { get; set; }
 
-    
 
     /// <summary>
     /// Get the string presentation of the object
@@ -93,23 +84,14 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class Update {\n");
-      
       sb.Append("  Id: ").Append(Id).Append("\n");
-      
       sb.Append("  UserId: ").Append(UserId).Append("\n");
-      
       sb.Append("  ConnectorId: ").Append(ConnectorId).Append("\n");
-      
       sb.Append("  NumberOfMeasurements: ").Append(NumberOfMeasurements).Append("\n");
-      
       sb.Append("  Success: ").Append(Success).Append("\n");
-      
       sb.Append("  Message: ").Append(Message).Append("\n");
-      
       sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-      
       sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-      
       sb.Append("}\n");
       return sb.ToString();
     }

@@ -12,331 +12,246 @@ namespace IO.Swagger.Model {
   /// </summary>
   [DataContract]
   public class Variable {
-    
     /// <summary>
-    /// id
+    /// Variable ID
     /// </summary>
-    /// <value>id</value>
+    /// <value>Variable ID</value>
     [DataMember(Name="id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "id")]
     public int? Id { get; set; }
 
-    
     /// <summary>
-    /// client_id
+    /// User-defined variable display name.
     /// </summary>
-    /// <value>client_id</value>
-    [DataMember(Name="client_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "client_id")]
-    public string ClientId { get; set; }
-
-    
-    /// <summary>
-    /// parent_id
-    /// </summary>
-    /// <value>parent_id</value>
-    [DataMember(Name="parent_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "parent_id")]
-    public int? ParentId { get; set; }
-
-    
-    /// <summary>
-    /// Name of the variable
-    /// </summary>
-    /// <value>Name of the variable</value>
+    /// <value>User-defined variable display name.</value>
     [DataMember(Name="name", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "name")]
     public string Name { get; set; }
 
-    
     /// <summary>
-    /// Category of the variable
+    /// Name used when the variable was originally created in the `variables` table.
     /// </summary>
-    /// <value>Category of the variable</value>
-    [DataMember(Name="variable_category_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "variable_category_id")]
-    public int? VariableCategoryId { get; set; }
+    /// <value>Name used when the variable was originally created in the `variables` table.</value>
+    [DataMember(Name="originalName", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "originalName")]
+    public string OriginalName { get; set; }
 
-    
     /// <summary>
-    /// ID of the default unit of measurement to use for this variable
+    /// Variable category like Mood, Sleep, Physical Activity, Treatment, Symptom, etc.
     /// </summary>
-    /// <value>ID of the default unit of measurement to use for this variable</value>
-    [DataMember(Name="default_unit_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "default_unit_id")]
-    public int? DefaultUnitId { get; set; }
+    /// <value>Variable category like Mood, Sleep, Physical Activity, Treatment, Symptom, etc.</value>
+    [DataMember(Name="category", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "category")]
+    public string Category { get; set; }
 
-    
     /// <summary>
-    /// How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean
+    /// Abbreviated name of the default unit for the variable
     /// </summary>
-    /// <value>How to combine values of this variable (for instance, to see a summary of the values over a month) 0 for sum OR 1 for mean</value>
-    [DataMember(Name="combination_operation", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "combination_operation")]
+    /// <value>Abbreviated name of the default unit for the variable</value>
+    [DataMember(Name="abbreviatedUnitName", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "abbreviatedUnitName")]
+    public string AbbreviatedUnitName { get; set; }
+
+    /// <summary>
+    /// Id of the default unit for the variable
+    /// </summary>
+    /// <value>Id of the default unit for the variable</value>
+    [DataMember(Name="abbreviatedUnitId", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "abbreviatedUnitId")]
+    public int? AbbreviatedUnitId { get; set; }
+
+    /// <summary>
+    /// Comma-separated list of source names to limit variables to those sources
+    /// </summary>
+    /// <value>Comma-separated list of source names to limit variables to those sources</value>
+    [DataMember(Name="sources", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "sources")]
+    public string Sources { get; set; }
+
+    /// <summary>
+    /// Minimum reasonable value for this variable (uses default unit)
+    /// </summary>
+    /// <value>Minimum reasonable value for this variable (uses default unit)</value>
+    [DataMember(Name="minimumValue", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "minimumValue")]
+    public double? MinimumValue { get; set; }
+
+    /// <summary>
+    /// Maximum reasonable value for this variable (uses default unit)
+    /// </summary>
+    /// <value>Maximum reasonable value for this variable (uses default unit)</value>
+    [DataMember(Name="maximumValue", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "maximumValue")]
+    public double? MaximumValue { get; set; }
+
+    /// <summary>
+    /// Way to aggregate measurements over time. Options are \"MEAN\" or \"SUM\".  SUM should be used for things like minutes of exercise.  If you use MEAN for exercise, then a person might exercise more minutes in one day but add separate measurements that were smaller.  So when we are doing correlational analysis, we would think that the person exercised less that day even though they exercised more.  Conversely, we must use MEAN for things such as ratings which cannot be SUMMED.
+    /// </summary>
+    /// <value>Way to aggregate measurements over time. Options are \"MEAN\" or \"SUM\".  SUM should be used for things like minutes of exercise.  If you use MEAN for exercise, then a person might exercise more minutes in one day but add separate measurements that were smaller.  So when we are doing correlational analysis, we would think that the person exercised less that day even though they exercised more.  Conversely, we must use MEAN for things such as ratings which cannot be SUMMED.</value>
+    [DataMember(Name="combinationOperation", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "combinationOperation")]
     public string CombinationOperation { get; set; }
 
-    
     /// <summary>
-    /// filling_value
+    /// Value for replacing null measurements
     /// </summary>
-    /// <value>filling_value</value>
-    [DataMember(Name="filling_value", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "filling_value")]
-    public float? FillingValue { get; set; }
+    /// <value>Value for replacing null measurements</value>
+    [DataMember(Name="fillingValue", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "fillingValue")]
+    public double? FillingValue { get; set; }
 
-    
     /// <summary>
-    /// maximum_allowed_value
+    /// The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables.
     /// </summary>
-    /// <value>maximum_allowed_value</value>
-    [DataMember(Name="maximum_allowed_value", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "maximum_allowed_value")]
-    public float? MaximumAllowedValue { get; set; }
+    /// <value>The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables.</value>
+    [DataMember(Name="joinWith", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "joinWith")]
+    public string JoinWith { get; set; }
 
-    
     /// <summary>
-    /// minimum_allowed_value
+    /// Array of Variables that are joined with this Variable
     /// </summary>
-    /// <value>minimum_allowed_value</value>
-    [DataMember(Name="minimum_allowed_value", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "minimum_allowed_value")]
-    public float? MinimumAllowedValue { get; set; }
+    /// <value>Array of Variables that are joined with this Variable</value>
+    [DataMember(Name="joinedVariables", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "joinedVariables")]
+    public List<Variable> JoinedVariables { get; set; }
 
-    
     /// <summary>
-    /// onset_delay
+    /// Id of the parent variable if this variable has any parent
     /// </summary>
-    /// <value>onset_delay</value>
-    [DataMember(Name="onset_delay", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "onset_delay")]
+    /// <value>Id of the parent variable if this variable has any parent</value>
+    [DataMember(Name="parent", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "parent")]
+    public int? Parent { get; set; }
+
+    /// <summary>
+    /// Array of Variables that are sub variables to this Variable
+    /// </summary>
+    /// <value>Array of Variables that are sub variables to this Variable</value>
+    [DataMember(Name="subVariables", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "subVariables")]
+    public List<Variable> SubVariables { get; set; }
+
+    /// <summary>
+    /// How long it takes for a measurement in this variable to take effect
+    /// </summary>
+    /// <value>How long it takes for a measurement in this variable to take effect</value>
+    [DataMember(Name="onsetDelay", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "onsetDelay")]
     public int? OnsetDelay { get; set; }
 
-    
     /// <summary>
-    /// duration_of_action
+    /// How long the effect of a measurement in this variable lasts
     /// </summary>
-    /// <value>duration_of_action</value>
-    [DataMember(Name="duration_of_action", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "duration_of_action")]
+    /// <value>How long the effect of a measurement in this variable lasts</value>
+    [DataMember(Name="durationOfAction", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "durationOfAction")]
     public int? DurationOfAction { get; set; }
 
-    
     /// <summary>
-    /// public
+    /// Earliest measurement time
     /// </summary>
-    /// <value>public</value>
-    [DataMember(Name="public", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "public")]
-    public int? Public { get; set; }
+    /// <value>Earliest measurement time</value>
+    [DataMember(Name="earliestMeasurementTime", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "earliestMeasurementTime")]
+    public int? EarliestMeasurementTime { get; set; }
 
-    
     /// <summary>
-    /// cause_only
+    /// Latest measurement time
     /// </summary>
-    /// <value>cause_only</value>
-    [DataMember(Name="cause_only", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "cause_only")]
-    public bool? CauseOnly { get; set; }
+    /// <value>Latest measurement time</value>
+    [DataMember(Name="latestMeasurementTime", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "latestMeasurementTime")]
+    public int? LatestMeasurementTime { get; set; }
 
-    
     /// <summary>
-    /// most_common_value
+    /// When this variable or its settings were last updated
     /// </summary>
-    /// <value>most_common_value</value>
-    [DataMember(Name="most_common_value", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "most_common_value")]
-    public float? MostCommonValue { get; set; }
+    /// <value>When this variable or its settings were last updated</value>
+    [DataMember(Name="updated", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "updated")]
+    public int? Updated { get; set; }
 
-    
     /// <summary>
-    /// most_common_unit_id
+    /// A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user.
     /// </summary>
-    /// <value>most_common_unit_id</value>
-    [DataMember(Name="most_common_unit_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "most_common_unit_id")]
-    public int? MostCommonUnitId { get; set; }
+    /// <value>A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user.</value>
+    [DataMember(Name="causeOnly", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "causeOnly")]
+    public int? CauseOnly { get; set; }
 
-    
     /// <summary>
-    /// standard_deviation
+    /// Number of correlations
     /// </summary>
-    /// <value>standard_deviation</value>
-    [DataMember(Name="standard_deviation", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "standard_deviation")]
-    public float? StandardDeviation { get; set; }
+    /// <value>Number of correlations</value>
+    [DataMember(Name="numberOfCorrelations", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "numberOfCorrelations")]
+    public int? NumberOfCorrelations { get; set; }
 
-    
     /// <summary>
-    /// variance
+    /// Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables.
     /// </summary>
-    /// <value>variance</value>
-    [DataMember(Name="variance", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "variance")]
-    public float? Variance { get; set; }
-
-    
-    /// <summary>
-    /// mean
-    /// </summary>
-    /// <value>mean</value>
-    [DataMember(Name="mean", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "mean")]
-    public float? Mean { get; set; }
-
-    
-    /// <summary>
-    /// median
-    /// </summary>
-    /// <value>median</value>
-    [DataMember(Name="median", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "median")]
-    public float? Median { get; set; }
-
-    
-    /// <summary>
-    /// number_of_measurements
-    /// </summary>
-    /// <value>number_of_measurements</value>
-    [DataMember(Name="number_of_measurements", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "number_of_measurements")]
-    public float? NumberOfMeasurements { get; set; }
-
-    
-    /// <summary>
-    /// number_of_unique_values
-    /// </summary>
-    /// <value>number_of_unique_values</value>
-    [DataMember(Name="number_of_unique_values", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "number_of_unique_values")]
-    public float? NumberOfUniqueValues { get; set; }
-
-    
-    /// <summary>
-    /// skewness
-    /// </summary>
-    /// <value>skewness</value>
-    [DataMember(Name="skewness", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "skewness")]
-    public float? Skewness { get; set; }
-
-    
-    /// <summary>
-    /// kurtosis
-    /// </summary>
-    /// <value>kurtosis</value>
-    [DataMember(Name="kurtosis", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "kurtosis")]
-    public float? Kurtosis { get; set; }
-
-    
-    /// <summary>
-    /// status
-    /// </summary>
-    /// <value>status</value>
-    [DataMember(Name="status", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "status")]
-    public string Status { get; set; }
-
-    
-    /// <summary>
-    /// error_message
-    /// </summary>
-    /// <value>error_message</value>
-    [DataMember(Name="error_message", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "error_message")]
-    public string ErrorMessage { get; set; }
-
-    
-    /// <summary>
-    /// last_successful_update_time
-    /// </summary>
-    /// <value>last_successful_update_time</value>
-    [DataMember(Name="last_successful_update_time", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "last_successful_update_time")]
-    public DateTime? LastSuccessfulUpdateTime { get; set; }
-
-    
-    /// <summary>
-    /// created_at
-    /// </summary>
-    /// <value>created_at</value>
-    [DataMember(Name="created_at", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "created_at")]
-    public DateTime? CreatedAt { get; set; }
-
-    
-    /// <summary>
-    /// updated_at
-    /// </summary>
-    /// <value>updated_at</value>
-    [DataMember(Name="updated_at", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "updated_at")]
-    public DateTime? UpdatedAt { get; set; }
-
-    
-    /// <summary>
-    /// product_url
-    /// </summary>
-    /// <value>product_url</value>
-    [DataMember(Name="product_url", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "product_url")]
-    public string ProductUrl { get; set; }
-
-    
-    /// <summary>
-    /// image_url
-    /// </summary>
-    /// <value>image_url</value>
-    [DataMember(Name="image_url", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "image_url")]
-    public string ImageUrl { get; set; }
-
-    
-    /// <summary>
-    /// price
-    /// </summary>
-    /// <value>price</value>
-    [DataMember(Name="price", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "price")]
-    public float? Price { get; set; }
-
-    
-    /// <summary>
-    /// number_of_user_variables
-    /// </summary>
-    /// <value>number_of_user_variables</value>
-    [DataMember(Name="number_of_user_variables", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "number_of_user_variables")]
-    public int? NumberOfUserVariables { get; set; }
-
-    
-    /// <summary>
-    /// outcome
-    /// </summary>
-    /// <value>outcome</value>
+    /// <value>Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables.</value>
     [DataMember(Name="outcome", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "outcome")]
-    public bool? Outcome { get; set; }
+    public int? Outcome { get; set; }
 
-    
     /// <summary>
-    /// minimum_recorded_value
+    /// The number of measurements that a given user had for this variable the last time a correlation calculation was performed. Generally correlation values are only updated once the current number of measurements for a variable is more than 10% greater than the measurementsAtLastAnalysis.  This avoids a computationally-demanding recalculation when there's not enough new data to make a significant difference in the correlation.
     /// </summary>
-    /// <value>minimum_recorded_value</value>
-    [DataMember(Name="minimum_recorded_value", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "minimum_recorded_value")]
-    public float? MinimumRecordedValue { get; set; }
+    /// <value>The number of measurements that a given user had for this variable the last time a correlation calculation was performed. Generally correlation values are only updated once the current number of measurements for a variable is more than 10% greater than the measurementsAtLastAnalysis.  This avoids a computationally-demanding recalculation when there's not enough new data to make a significant difference in the correlation.</value>
+    [DataMember(Name="measurementsAtLastAnalysis", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "measurementsAtLastAnalysis")]
+    public int? MeasurementsAtLastAnalysis { get; set; }
 
-    
     /// <summary>
-    /// maximum_recorded_value
+    /// Number of measurements
     /// </summary>
-    /// <value>maximum_recorded_value</value>
-    [DataMember(Name="maximum_recorded_value", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "maximum_recorded_value")]
-    public float? MaximumRecordedValue { get; set; }
+    /// <value>Number of measurements</value>
+    [DataMember(Name="numberOfMeasurements", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "numberOfMeasurements")]
+    public int? NumberOfMeasurements { get; set; }
 
-    
+    /// <summary>
+    /// Last unit
+    /// </summary>
+    /// <value>Last unit</value>
+    [DataMember(Name="lastUnit", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "lastUnit")]
+    public string LastUnit { get; set; }
+
+    /// <summary>
+    /// Last value
+    /// </summary>
+    /// <value>Last value</value>
+    [DataMember(Name="lastValue", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "lastValue")]
+    public int? LastValue { get; set; }
+
+    /// <summary>
+    /// Most common value
+    /// </summary>
+    /// <value>Most common value</value>
+    [DataMember(Name="mostCommonValue", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "mostCommonValue")]
+    public int? MostCommonValue { get; set; }
+
+    /// <summary>
+    /// Most common unit
+    /// </summary>
+    /// <value>Most common unit</value>
+    [DataMember(Name="mostCommonUnit", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "mostCommonUnit")]
+    public string MostCommonUnit { get; set; }
+
+    /// <summary>
+    /// Last source
+    /// </summary>
+    /// <value>Last source</value>
+    [DataMember(Name="lastSource", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "lastSource")]
+    public int? LastSource { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -345,79 +260,36 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class Variable {\n");
-      
       sb.Append("  Id: ").Append(Id).Append("\n");
-      
-      sb.Append("  ClientId: ").Append(ClientId).Append("\n");
-      
-      sb.Append("  ParentId: ").Append(ParentId).Append("\n");
-      
       sb.Append("  Name: ").Append(Name).Append("\n");
-      
-      sb.Append("  VariableCategoryId: ").Append(VariableCategoryId).Append("\n");
-      
-      sb.Append("  DefaultUnitId: ").Append(DefaultUnitId).Append("\n");
-      
+      sb.Append("  OriginalName: ").Append(OriginalName).Append("\n");
+      sb.Append("  Category: ").Append(Category).Append("\n");
+      sb.Append("  AbbreviatedUnitName: ").Append(AbbreviatedUnitName).Append("\n");
+      sb.Append("  AbbreviatedUnitId: ").Append(AbbreviatedUnitId).Append("\n");
+      sb.Append("  Sources: ").Append(Sources).Append("\n");
+      sb.Append("  MinimumValue: ").Append(MinimumValue).Append("\n");
+      sb.Append("  MaximumValue: ").Append(MaximumValue).Append("\n");
       sb.Append("  CombinationOperation: ").Append(CombinationOperation).Append("\n");
-      
       sb.Append("  FillingValue: ").Append(FillingValue).Append("\n");
-      
-      sb.Append("  MaximumAllowedValue: ").Append(MaximumAllowedValue).Append("\n");
-      
-      sb.Append("  MinimumAllowedValue: ").Append(MinimumAllowedValue).Append("\n");
-      
+      sb.Append("  JoinWith: ").Append(JoinWith).Append("\n");
+      sb.Append("  JoinedVariables: ").Append(JoinedVariables).Append("\n");
+      sb.Append("  Parent: ").Append(Parent).Append("\n");
+      sb.Append("  SubVariables: ").Append(SubVariables).Append("\n");
       sb.Append("  OnsetDelay: ").Append(OnsetDelay).Append("\n");
-      
       sb.Append("  DurationOfAction: ").Append(DurationOfAction).Append("\n");
-      
-      sb.Append("  Public: ").Append(Public).Append("\n");
-      
+      sb.Append("  EarliestMeasurementTime: ").Append(EarliestMeasurementTime).Append("\n");
+      sb.Append("  LatestMeasurementTime: ").Append(LatestMeasurementTime).Append("\n");
+      sb.Append("  Updated: ").Append(Updated).Append("\n");
       sb.Append("  CauseOnly: ").Append(CauseOnly).Append("\n");
-      
-      sb.Append("  MostCommonValue: ").Append(MostCommonValue).Append("\n");
-      
-      sb.Append("  MostCommonUnitId: ").Append(MostCommonUnitId).Append("\n");
-      
-      sb.Append("  StandardDeviation: ").Append(StandardDeviation).Append("\n");
-      
-      sb.Append("  Variance: ").Append(Variance).Append("\n");
-      
-      sb.Append("  Mean: ").Append(Mean).Append("\n");
-      
-      sb.Append("  Median: ").Append(Median).Append("\n");
-      
-      sb.Append("  NumberOfMeasurements: ").Append(NumberOfMeasurements).Append("\n");
-      
-      sb.Append("  NumberOfUniqueValues: ").Append(NumberOfUniqueValues).Append("\n");
-      
-      sb.Append("  Skewness: ").Append(Skewness).Append("\n");
-      
-      sb.Append("  Kurtosis: ").Append(Kurtosis).Append("\n");
-      
-      sb.Append("  Status: ").Append(Status).Append("\n");
-      
-      sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
-      
-      sb.Append("  LastSuccessfulUpdateTime: ").Append(LastSuccessfulUpdateTime).Append("\n");
-      
-      sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-      
-      sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-      
-      sb.Append("  ProductUrl: ").Append(ProductUrl).Append("\n");
-      
-      sb.Append("  ImageUrl: ").Append(ImageUrl).Append("\n");
-      
-      sb.Append("  Price: ").Append(Price).Append("\n");
-      
-      sb.Append("  NumberOfUserVariables: ").Append(NumberOfUserVariables).Append("\n");
-      
+      sb.Append("  NumberOfCorrelations: ").Append(NumberOfCorrelations).Append("\n");
       sb.Append("  Outcome: ").Append(Outcome).Append("\n");
-      
-      sb.Append("  MinimumRecordedValue: ").Append(MinimumRecordedValue).Append("\n");
-      
-      sb.Append("  MaximumRecordedValue: ").Append(MaximumRecordedValue).Append("\n");
-      
+      sb.Append("  MeasurementsAtLastAnalysis: ").Append(MeasurementsAtLastAnalysis).Append("\n");
+      sb.Append("  NumberOfMeasurements: ").Append(NumberOfMeasurements).Append("\n");
+      sb.Append("  LastUnit: ").Append(LastUnit).Append("\n");
+      sb.Append("  LastValue: ").Append(LastValue).Append("\n");
+      sb.Append("  MostCommonValue: ").Append(MostCommonValue).Append("\n");
+      sb.Append("  MostCommonUnit: ").Append(MostCommonUnit).Append("\n");
+      sb.Append("  LastSource: ").Append(LastSource).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

@@ -78,7 +78,40 @@ namespace IO.Swagger.Client
                     _tempFolderPath = value  + Path.DirectorySeparatorChar;
             }
         }
-  
+
+        private const string ISO8601_DATETIME_FORMAT = "o";
+
+        private static string _dateTimeFormat = ISO8601_DATETIME_FORMAT;
+
+        /// <summary>
+        /// Gets or sets the the date time format used when serializing in the ApiClient
+        /// By default, it's set to ISO 8601 - "o", for others see:
+        /// https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx
+        /// and https://msdn.microsoft.com/en-us/library/8kb3ddd4(v=vs.110).aspx
+        /// No validation is done to ensure that the string you're providing is valid
+        /// </summary>
+        /// <value>The DateTimeFormat string</value>
+        public static String DateTimeFormat
+        {
+            get
+            {
+                return _dateTimeFormat;
+            }
+            set
+            {
+                if (string.IsNullOrEmpty(value))
+                {
+                    // Never allow a blank or null string, go back to the default
+                    _dateTimeFormat = ISO8601_DATETIME_FORMAT;
+                    return;
+                }
+
+                // Caution, no validation when you choose date time format other than ISO 8601
+                // Take a look at the above links
+                _dateTimeFormat = value;
+            }
+        }
+
         /// <summary>
         /// Returns a string with essential information for debugging.
         /// </summary>
@@ -90,7 +123,7 @@ namespace IO.Swagger.Client
                      .GetExecutingAssembly()
                      .GetReferencedAssemblies()
                      .Where(x => x.Name == "System.Core").First().Version.ToString()  + "\n";
-            report += "    Version of the API: 2.0\n";
+            report += "    Version of the API: 2.0.6\n";
             report += "    SDK Package Version: 1.0.0\n";
   
             return report;

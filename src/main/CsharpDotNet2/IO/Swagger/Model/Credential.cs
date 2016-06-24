@@ -12,52 +12,54 @@ namespace IO.Swagger.Model {
   /// </summary>
   [DataContract]
   public class Credential {
-    
     /// <summary>
-    /// connector_id
+    /// ID of user that owns this credential
     /// </summary>
-    /// <value>connector_id</value>
+    /// <value>ID of user that owns this credential</value>
+    [DataMember(Name="user_id", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "user_id")]
+    public int? UserId { get; set; }
+
+    /// <summary>
+    /// The id for the connector data source from which the credential was obtained
+    /// </summary>
+    /// <value>The id for the connector data source from which the credential was obtained</value>
     [DataMember(Name="connector_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "connector_id")]
     public int? ConnectorId { get; set; }
 
-    
     /// <summary>
-    /// attr_key
+    /// Attribute name such as token, userid, username, or password
     /// </summary>
-    /// <value>attr_key</value>
+    /// <value>Attribute name such as token, userid, username, or password</value>
     [DataMember(Name="attr_key", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "attr_key")]
     public string AttrKey { get; set; }
 
-    
     /// <summary>
-    /// attr_value
+    /// Encrypted value for the attribute specified
     /// </summary>
-    /// <value>attr_value</value>
+    /// <value>Encrypted value for the attribute specified</value>
     [DataMember(Name="attr_value", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "attr_value")]
     public string AttrValue { get; set; }
 
-    
     /// <summary>
-    /// created_at
+    /// When the record was first created. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>created_at</value>
+    /// <value>When the record was first created. Use ISO 8601 datetime format</value>
     [DataMember(Name="created_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "created_at")]
     public DateTime? CreatedAt { get; set; }
 
-    
     /// <summary>
-    /// updated_at
+    /// When the record in the database was last updated. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>updated_at</value>
+    /// <value>When the record in the database was last updated. Use ISO 8601 datetime format</value>
     [DataMember(Name="updated_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updated_at")]
     public DateTime? UpdatedAt { get; set; }
 
-    
 
     /// <summary>
     /// Get the string presentation of the object
@@ -66,17 +68,12 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class Credential {\n");
-      
+      sb.Append("  UserId: ").Append(UserId).Append("\n");
       sb.Append("  ConnectorId: ").Append(ConnectorId).Append("\n");
-      
       sb.Append("  AttrKey: ").Append(AttrKey).Append("\n");
-      
       sb.Append("  AttrValue: ").Append(AttrValue).Append("\n");
-      
       sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-      
       sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-      
       sb.Append("}\n");
       return sb.ToString();
     }

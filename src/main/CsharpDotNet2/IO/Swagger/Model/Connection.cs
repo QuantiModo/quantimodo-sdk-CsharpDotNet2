@@ -12,7 +12,6 @@ namespace IO.Swagger.Model {
   /// </summary>
   [DataContract]
   public class Connection {
-    
     /// <summary>
     /// id
     /// </summary>
@@ -21,97 +20,86 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "id")]
     public int? Id { get; set; }
 
-    
     /// <summary>
-    /// user_id
+    /// ID of user that owns this correlation
     /// </summary>
-    /// <value>user_id</value>
+    /// <value>ID of user that owns this correlation</value>
     [DataMember(Name="user_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "user_id")]
     public int? UserId { get; set; }
 
-    
     /// <summary>
-    /// connector_id
+    /// The id for the connector data source for which the connection is connected
     /// </summary>
-    /// <value>connector_id</value>
+    /// <value>The id for the connector data source for which the connection is connected</value>
     [DataMember(Name="connector_id", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "connector_id")]
     public int? ConnectorId { get; set; }
 
-    
     /// <summary>
-    /// connect_status
+    /// Indicates whether a connector is currently connected to a service for a user.
     /// </summary>
-    /// <value>connect_status</value>
+    /// <value>Indicates whether a connector is currently connected to a service for a user.</value>
     [DataMember(Name="connect_status", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "connect_status")]
     public string ConnectStatus { get; set; }
 
-    
     /// <summary>
-    /// connect_error
+    /// Error message if there is a problem with authorizing this connection.
     /// </summary>
-    /// <value>connect_error</value>
+    /// <value>Error message if there is a problem with authorizing this connection.</value>
     [DataMember(Name="connect_error", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "connect_error")]
     public string ConnectError { get; set; }
 
-    
     /// <summary>
-    /// update_requested_at
+    /// Time at which an update was requested by a user.
     /// </summary>
-    /// <value>update_requested_at</value>
+    /// <value>Time at which an update was requested by a user.</value>
     [DataMember(Name="update_requested_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "update_requested_at")]
     public DateTime? UpdateRequestedAt { get; set; }
 
-    
     /// <summary>
-    /// update_status
+    /// Indicates whether a connector is currently updated.
     /// </summary>
-    /// <value>update_status</value>
+    /// <value>Indicates whether a connector is currently updated.</value>
     [DataMember(Name="update_status", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "update_status")]
     public string UpdateStatus { get; set; }
 
-    
     /// <summary>
-    /// update_error
+    /// Indicates if there was an error during the update.
     /// </summary>
-    /// <value>update_error</value>
+    /// <value>Indicates if there was an error during the update.</value>
     [DataMember(Name="update_error", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "update_error")]
     public string UpdateError { get; set; }
 
-    
     /// <summary>
-    /// last_successful_updated_at
+    /// The time at which the connector was last successfully updated.
     /// </summary>
-    /// <value>last_successful_updated_at</value>
+    /// <value>The time at which the connector was last successfully updated.</value>
     [DataMember(Name="last_successful_updated_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "last_successful_updated_at")]
     public DateTime? LastSuccessfulUpdatedAt { get; set; }
 
-    
     /// <summary>
-    /// created_at
+    /// When the record was first created. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>created_at</value>
+    /// <value>When the record was first created. Use ISO 8601 datetime format</value>
     [DataMember(Name="created_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "created_at")]
     public DateTime? CreatedAt { get; set; }
 
-    
     /// <summary>
-    /// updated_at
+    /// When the record in the database was last updated. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>updated_at</value>
+    /// <value>When the record in the database was last updated. Use ISO 8601 datetime format</value>
     [DataMember(Name="updated_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updated_at")]
     public DateTime? UpdatedAt { get; set; }
 
-    
 
     /// <summary>
     /// Get the string presentation of the object
@@ -120,29 +108,17 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class Connection {\n");
-      
       sb.Append("  Id: ").Append(Id).Append("\n");
-      
       sb.Append("  UserId: ").Append(UserId).Append("\n");
-      
       sb.Append("  ConnectorId: ").Append(ConnectorId).Append("\n");
-      
       sb.Append("  ConnectStatus: ").Append(ConnectStatus).Append("\n");
-      
       sb.Append("  ConnectError: ").Append(ConnectError).Append("\n");
-      
       sb.Append("  UpdateRequestedAt: ").Append(UpdateRequestedAt).Append("\n");
-      
       sb.Append("  UpdateStatus: ").Append(UpdateStatus).Append("\n");
-      
       sb.Append("  UpdateError: ").Append(UpdateError).Append("\n");
-      
       sb.Append("  LastSuccessfulUpdatedAt: ").Append(LastSuccessfulUpdatedAt).Append("\n");
-      
       sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-      
       sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-      
       sb.Append("}\n");
       return sb.ToString();
     }

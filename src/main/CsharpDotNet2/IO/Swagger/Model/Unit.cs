@@ -12,25 +12,6 @@ namespace IO.Swagger.Model {
   /// </summary>
   [DataContract]
   public class Unit {
-    
-    /// <summary>
-    /// id
-    /// </summary>
-    /// <value>id</value>
-    [DataMember(Name="id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "id")]
-    public int? Id { get; set; }
-
-    
-    /// <summary>
-    /// client_id
-    /// </summary>
-    /// <value>client_id</value>
-    [DataMember(Name="client_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "client_id")]
-    public string ClientId { get; set; }
-
-    
     /// <summary>
     /// Unit name
     /// </summary>
@@ -39,97 +20,46 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "name")]
     public string Name { get; set; }
 
-    
     /// <summary>
     /// Unit abbreviation
     /// </summary>
     /// <value>Unit abbreviation</value>
-    [DataMember(Name="abbreviated_name", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "abbreviated_name")]
+    [DataMember(Name="abbreviatedName", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "abbreviatedName")]
     public string AbbreviatedName { get; set; }
 
-    
     /// <summary>
-    /// Unit category ID
+    /// Unit category
     /// </summary>
-    /// <value>Unit category ID</value>
-    [DataMember(Name="category_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "category_id")]
-    public int? CategoryId { get; set; }
+    /// <value>Unit category</value>
+    [DataMember(Name="category", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "category")]
+    public string Category { get; set; }
 
-    
     /// <summary>
-    /// Unit minimum value
+    /// The smallest acceptable value for measurements using this unit
     /// </summary>
-    /// <value>Unit minimum value</value>
-    [DataMember(Name="minimum_value", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "minimum_value")]
-    public float? MinimumValue { get; set; }
+    /// <value>The smallest acceptable value for measurements using this unit</value>
+    [DataMember(Name="minimumValue", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "minimumValue")]
+    public double? MinimumValue { get; set; }
 
-    
     /// <summary>
-    /// Unit maximum value
+    /// The largest acceptable value for measurements using this unit
     /// </summary>
-    /// <value>Unit maximum value</value>
-    [DataMember(Name="maximum_value", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "maximum_value")]
-    public float? MaximumValue { get; set; }
+    /// <value>The largest acceptable value for measurements using this unit</value>
+    [DataMember(Name="maximumValue", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "maximumValue")]
+    public double? MaximumValue { get; set; }
 
-    
     /// <summary>
-    /// updated
+    /// Conversion steps list
     /// </summary>
-    /// <value>updated</value>
-    [DataMember(Name="updated", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "updated")]
-    public int? Updated { get; set; }
+    /// <value>Conversion steps list</value>
+    [DataMember(Name="conversionSteps", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "conversionSteps")]
+    public List<ConversionStep> ConversionSteps { get; set; }
 
-    
-    /// <summary>
-    /// ID of default unit
-    /// </summary>
-    /// <value>ID of default unit</value>
-    [DataMember(Name="default_unit_id", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "default_unit_id")]
-    public int? DefaultUnitId { get; set; }
-
-    
-    /// <summary>
-    /// Value multiplied to
-    /// </summary>
-    /// <value>Value multiplied to</value>
-    [DataMember(Name="multiply", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "multiply")]
-    public float? Multiply { get; set; }
-
-    
-    /// <summary>
-    /// Value which should be added to convert to default unit
-    /// </summary>
-    /// <value>Value which should be added to convert to default unit</value>
-    [DataMember(Name="add", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "add")]
-    public float? Add { get; set; }
-
-    
-    /// <summary>
-    /// created_at
-    /// </summary>
-    /// <value>created_at</value>
-    [DataMember(Name="created_at", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "created_at")]
-    public DateTime? CreatedAt { get; set; }
-
-    
-    /// <summary>
-    /// updated_at
-    /// </summary>
-    /// <value>updated_at</value>
-    [DataMember(Name="updated_at", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "updated_at")]
-    public DateTime? UpdatedAt { get; set; }
-
-    
 
     /// <summary>
     /// Get the string presentation of the object
@@ -138,33 +68,12 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class Unit {\n");
-      
-      sb.Append("  Id: ").Append(Id).Append("\n");
-      
-      sb.Append("  ClientId: ").Append(ClientId).Append("\n");
-      
       sb.Append("  Name: ").Append(Name).Append("\n");
-      
       sb.Append("  AbbreviatedName: ").Append(AbbreviatedName).Append("\n");
-      
-      sb.Append("  CategoryId: ").Append(CategoryId).Append("\n");
-      
+      sb.Append("  Category: ").Append(Category).Append("\n");
       sb.Append("  MinimumValue: ").Append(MinimumValue).Append("\n");
-      
       sb.Append("  MaximumValue: ").Append(MaximumValue).Append("\n");
-      
-      sb.Append("  Updated: ").Append(Updated).Append("\n");
-      
-      sb.Append("  DefaultUnitId: ").Append(DefaultUnitId).Append("\n");
-      
-      sb.Append("  Multiply: ").Append(Multiply).Append("\n");
-      
-      sb.Append("  Add: ").Append(Add).Append("\n");
-      
-      sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-      
-      sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-      
+      sb.Append("  ConversionSteps: ").Append(ConversionSteps).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

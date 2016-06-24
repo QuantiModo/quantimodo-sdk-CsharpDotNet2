@@ -24,7 +24,7 @@ namespace IO.Swagger.Client
         /// Initializes a new instance of the <see cref="ApiClient" /> class.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(String basePath="https://app.quantimo.do/api/v2")
+        public ApiClient(String basePath="https://app.quantimo.do/api")
         {
             BasePath = basePath;
             RestClient = new RestClient(BasePath);
@@ -134,7 +134,7 @@ namespace IO.Swagger.Client
         }
     
         /// <summary>
-        /// If parameter is DateTime, output in ISO8601 format.
+        /// If parameter is DateTime, output in a formatted string (default ISO 8601), customizable with Configuration.DateTime.
         /// If parameter is a list of string, join the list with ",".
         /// Otherwise just return the string.
         /// </summary>
@@ -143,7 +143,11 @@ namespace IO.Swagger.Client
         public string ParameterToString(object obj)
         {
             if (obj is DateTime)
-                return ((DateTime)obj).ToString ("u");
+                // Return a formatted date string - Can be customized with Configuration.DateTimeFormat
+                // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern ("o")
+                // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
+                // For example: 2009-06-15T13:45:30.0000000
+                return ((DateTime)obj).ToString (Configuration.DateTimeFormat);
             else if (obj is List<string>)
                 return String.Join(",", (obj as List<string>).ToArray());
             else
@@ -155,6 +159,7 @@ namespace IO.Swagger.Client
         /// </summary>
         /// <param name="content">HTTP body (e.g. string, JSON).</param>
         /// <param name="type">Object type.</param>
+        /// <param name="headers">HTTP headers.</param>
         /// <returns>Object representation of the JSON string.</returns>
         public object Deserialize(string content, Type type, IList<Parameter> headers=null)
         {
@@ -252,12 +257,22 @@ namespace IO.Swagger.Client
                 // determine which one to use
                 switch(auth)
                 {
-                    
+                    case "oauth2":
+                        
+                        //TODO support oauth
+                        break;
                     case "quantimodo_oauth2":
                         
                         //TODO support oauth
                         break;
-                    
+                    case "basicAuth":
+                        headerParams["Authorization"] = "Basic " + Base64Encode(Configuration.Username + ":" + Configuration.Password);
+                        
+                        break;
+                    case "internalApiKey":
+                        headerParams["api_key"] = GetApiKeyWithPrefix("api_key");
+                        
+                        break;
                     default:
                         //TODO show warning about security definition not found
                         break;

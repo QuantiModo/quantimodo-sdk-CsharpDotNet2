@@ -12,15 +12,6 @@ namespace IO.Swagger.Model {
   /// </summary>
   [DataContract]
   public class InlineResponse2002 {
-    
-    /// <summary>
-    /// Gets or Sets Data
-    /// </summary>
-    [DataMember(Name="data", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "data")]
-    public string Data { get; set; }
-
-    
     /// <summary>
     /// Gets or Sets Success
     /// </summary>
@@ -28,7 +19,13 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "success")]
     public bool? Success { get; set; }
 
-    
+    /// <summary>
+    /// Gets or Sets Data
+    /// </summary>
+    [DataMember(Name="data", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "data")]
+    public TrackingReminder Data { get; set; }
+
 
     /// <summary>
     /// Get the string presentation of the object
@@ -37,11 +34,8 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class InlineResponse2002 {\n");
-      
-      sb.Append("  Data: ").Append(Data).Append("\n");
-      
       sb.Append("  Success: ").Append(Success).Append("\n");
-      
+      sb.Append("  Data: ").Append(Data).Append("\n");
       sb.Append("}\n");
       return sb.ToString();
     }

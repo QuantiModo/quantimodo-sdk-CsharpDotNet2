@@ -12,7 +12,6 @@ namespace IO.Swagger.Model {
   /// </summary>
   [DataContract]
   public class UserVariable {
-    
     /// <summary>
     /// ID of the parent variable if this variable has any parent
     /// </summary>
@@ -21,7 +20,14 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "parent_id")]
     public int? ParentId { get; set; }
 
-    
+    /// <summary>
+    /// User ID
+    /// </summary>
+    /// <value>User ID</value>
+    [DataMember(Name="user_id", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "user_id")]
+    public int? UserId { get; set; }
+
     /// <summary>
     /// client_id
     /// </summary>
@@ -30,7 +36,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "client_id")]
     public string ClientId { get; set; }
 
-    
     /// <summary>
     /// ID of variable
     /// </summary>
@@ -39,7 +44,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "variable_id")]
     public int? VariableId { get; set; }
 
-    
     /// <summary>
     /// ID of unit to use for this variable
     /// </summary>
@@ -48,7 +52,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "default_unit_id")]
     public int? DefaultUnitId { get; set; }
 
-    
     /// <summary>
     /// Minimum reasonable value for this variable (uses default unit)
     /// </summary>
@@ -57,7 +60,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "minimum_allowed_value")]
     public float? MinimumAllowedValue { get; set; }
 
-    
     /// <summary>
     /// Maximum reasonable value for this variable (uses default unit)
     /// </summary>
@@ -66,7 +68,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "maximum_allowed_value")]
     public float? MaximumAllowedValue { get; set; }
 
-    
     /// <summary>
     /// Value for replacing null measurements
     /// </summary>
@@ -75,7 +76,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "filling_value")]
     public float? FillingValue { get; set; }
 
-    
     /// <summary>
     /// The Variable this Variable should be joined with. If the variable is joined with some other variable then it is not shown to user in the list of variables
     /// </summary>
@@ -84,7 +84,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "join_with")]
     public int? JoinWith { get; set; }
 
-    
     /// <summary>
     /// How long it takes for a measurement in this variable to take effect
     /// </summary>
@@ -93,7 +92,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "onset_delay")]
     public int? OnsetDelay { get; set; }
 
-    
     /// <summary>
     /// Estimated duration of time following the onset delay in which a stimulus produces a perceivable effect
     /// </summary>
@@ -102,7 +100,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "duration_of_action")]
     public int? DurationOfAction { get; set; }
 
-    
     /// <summary>
     /// ID of variable category
     /// </summary>
@@ -111,7 +108,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "variable_category_id")]
     public int? VariableCategoryId { get; set; }
 
-    
     /// <summary>
     /// updated
     /// </summary>
@@ -120,16 +116,14 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "updated")]
     public int? Updated { get; set; }
 
-    
     /// <summary>
     /// Is variable public
     /// </summary>
     /// <value>Is variable public</value>
     [DataMember(Name="public", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "public")]
-    public int? Public { get; set; }
+    public int? _Public { get; set; }
 
-    
     /// <summary>
     /// A value of 1 indicates that this variable is generally a cause in a causal relationship.  An example of a causeOnly variable would be a variable such as Cloud Cover which would generally not be influenced by the behaviour of the user
     /// </summary>
@@ -138,7 +132,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "cause_only")]
     public bool? CauseOnly { get; set; }
 
-    
     /// <summary>
     /// 0 -> No filling, 1 -> Use filling-value
     /// </summary>
@@ -147,7 +140,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "filling_type")]
     public string FillingType { get; set; }
 
-    
     /// <summary>
     /// Number of measurements
     /// </summary>
@@ -156,7 +148,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "number_of_measurements")]
     public int? NumberOfMeasurements { get; set; }
 
-    
     /// <summary>
     /// Number of processed measurements
     /// </summary>
@@ -165,7 +156,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "number_of_processed_measurements")]
     public int? NumberOfProcessedMeasurements { get; set; }
 
-    
     /// <summary>
     /// Number of measurements at last analysis
     /// </summary>
@@ -174,7 +164,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "measurements_at_last_analysis")]
     public int? MeasurementsAtLastAnalysis { get; set; }
 
-    
     /// <summary>
     /// ID of last Unit
     /// </summary>
@@ -183,7 +172,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "last_unit_id")]
     public int? LastUnitId { get; set; }
 
-    
     /// <summary>
     /// ID of last original Unit
     /// </summary>
@@ -192,7 +180,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "last_original_unit_id")]
     public int? LastOriginalUnitId { get; set; }
 
-    
     /// <summary>
     /// Last Value
     /// </summary>
@@ -201,7 +188,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "last_value")]
     public float? LastValue { get; set; }
 
-    
     /// <summary>
     /// Last original value which is stored
     /// </summary>
@@ -210,7 +196,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "last_original_value")]
     public int? LastOriginalValue { get; set; }
 
-    
     /// <summary>
     /// ID of last source
     /// </summary>
@@ -219,7 +204,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "last_source_id")]
     public int? LastSourceId { get; set; }
 
-    
     /// <summary>
     /// Number of correlations for this variable
     /// </summary>
@@ -228,7 +212,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "number_of_correlations")]
     public int? NumberOfCorrelations { get; set; }
 
-    
     /// <summary>
     /// status
     /// </summary>
@@ -237,7 +220,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "status")]
     public string Status { get; set; }
 
-    
     /// <summary>
     /// error_message
     /// </summary>
@@ -246,7 +228,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "error_message")]
     public string ErrorMessage { get; set; }
 
-    
     /// <summary>
     /// When this variable or its settings were last updated
     /// </summary>
@@ -255,7 +236,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "last_successful_update_time")]
     public DateTime? LastSuccessfulUpdateTime { get; set; }
 
-    
     /// <summary>
     /// Standard deviation
     /// </summary>
@@ -264,7 +244,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "standard_deviation")]
     public float? StandardDeviation { get; set; }
 
-    
     /// <summary>
     /// Variance
     /// </summary>
@@ -273,16 +252,14 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "variance")]
     public float? Variance { get; set; }
 
-    
     /// <summary>
-    /// Minimum recorded daily value of this variable
+    /// Minimum recorded value of this variable
     /// </summary>
-    /// <value>Minimum recorded daily value of this variable</value>
-    [DataMember(Name="minimum_recorded_daily_value", EmitDefaultValue=false)]
-    [JsonProperty(PropertyName = "minimum_recorded_daily_value")]
-    public float? MinimumRecordedDailyValue { get; set; }
+    /// <value>Minimum recorded value of this variable</value>
+    [DataMember(Name="minimum_recorded_value", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "minimum_recorded_value")]
+    public float? MinimumRecordedValue { get; set; }
 
-    
     /// <summary>
     /// Maximum recorded daily value of this variable
     /// </summary>
@@ -291,7 +268,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "maximum_recorded_daily_value")]
     public float? MaximumRecordedDailyValue { get; set; }
 
-    
     /// <summary>
     /// Mean
     /// </summary>
@@ -300,7 +276,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "mean")]
     public float? Mean { get; set; }
 
-    
     /// <summary>
     /// Median
     /// </summary>
@@ -309,7 +284,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "median")]
     public float? Median { get; set; }
 
-    
     /// <summary>
     /// Most common Unit ID
     /// </summary>
@@ -318,7 +292,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "most_common_unit_id")]
     public int? MostCommonUnitId { get; set; }
 
-    
     /// <summary>
     /// Most common value
     /// </summary>
@@ -327,7 +300,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "most_common_value")]
     public float? MostCommonValue { get; set; }
 
-    
     /// <summary>
     /// Number of unique daily values
     /// </summary>
@@ -336,7 +308,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "number_of_unique_daily_values")]
     public float? NumberOfUniqueDailyValues { get; set; }
 
-    
     /// <summary>
     /// Number of changes
     /// </summary>
@@ -345,7 +316,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "number_of_changes")]
     public int? NumberOfChanges { get; set; }
 
-    
     /// <summary>
     /// Skewness
     /// </summary>
@@ -354,7 +324,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "skewness")]
     public float? Skewness { get; set; }
 
-    
     /// <summary>
     /// Kurtosis
     /// </summary>
@@ -363,7 +332,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "kurtosis")]
     public float? Kurtosis { get; set; }
 
-    
     /// <summary>
     /// Latitude
     /// </summary>
@@ -372,7 +340,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "latitude")]
     public float? Latitude { get; set; }
 
-    
     /// <summary>
     /// Longitude
     /// </summary>
@@ -381,7 +348,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "longitude")]
     public float? Longitude { get; set; }
 
-    
     /// <summary>
     /// Location
     /// </summary>
@@ -390,25 +356,38 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "location")]
     public string Location { get; set; }
 
-    
     /// <summary>
-    /// created_at
+    /// Earliest measurement start_time to be used in analysis. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>created_at</value>
+    /// <value>Earliest measurement start_time to be used in analysis. Use ISO 8601 datetime format</value>
+    [DataMember(Name="experiment_start_time", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "experiment_start_time")]
+    public DateTime? ExperimentStartTime { get; set; }
+
+    /// <summary>
+    /// Latest measurement start_time to be used in analysis. Use ISO 8601 datetime format
+    /// </summary>
+    /// <value>Latest measurement start_time to be used in analysis. Use ISO 8601 datetime format</value>
+    [DataMember(Name="experiment_end_time", EmitDefaultValue=false)]
+    [JsonProperty(PropertyName = "experiment_end_time")]
+    public DateTime? ExperimentEndTime { get; set; }
+
+    /// <summary>
+    /// When the record was first created. Use ISO 8601 datetime format
+    /// </summary>
+    /// <value>When the record was first created. Use ISO 8601 datetime format</value>
     [DataMember(Name="created_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "created_at")]
     public DateTime? CreatedAt { get; set; }
 
-    
     /// <summary>
-    /// updated_at
+    /// When the record in the database was last updated. Use ISO 8601 datetime format
     /// </summary>
-    /// <value>updated_at</value>
+    /// <value>When the record in the database was last updated. Use ISO 8601 datetime format</value>
     [DataMember(Name="updated_at", EmitDefaultValue=false)]
     [JsonProperty(PropertyName = "updated_at")]
     public DateTime? UpdatedAt { get; set; }
 
-    
     /// <summary>
     /// Outcome variables (those with `outcome` == 1) are variables for which a human would generally want to identify the influencing factors.  These include symptoms of illness, physique, mood, cognitive performance, etc.  Generally correlation calculations are only performed on outcome variables
     /// </summary>
@@ -417,7 +396,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "outcome")]
     public bool? Outcome { get; set; }
 
-    
     /// <summary>
     /// Comma-separated list of source names to limit variables to those sources
     /// </summary>
@@ -426,7 +404,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "sources")]
     public string Sources { get; set; }
 
-    
     /// <summary>
     /// Earliest source time
     /// </summary>
@@ -435,7 +412,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "earliest_source_time")]
     public int? EarliestSourceTime { get; set; }
 
-    
     /// <summary>
     /// Latest source time
     /// </summary>
@@ -444,7 +420,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "latest_source_time")]
     public int? LatestSourceTime { get; set; }
 
-    
     /// <summary>
     /// Earliest measurement time
     /// </summary>
@@ -453,7 +428,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "earliest_measurement_time")]
     public int? EarliestMeasurementTime { get; set; }
 
-    
     /// <summary>
     /// Latest measurement time
     /// </summary>
@@ -462,7 +436,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "latest_measurement_time")]
     public int? LatestMeasurementTime { get; set; }
 
-    
     /// <summary>
     /// Earliest filling time
     /// </summary>
@@ -471,7 +444,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "earliest_filling_time")]
     public int? EarliestFillingTime { get; set; }
 
-    
     /// <summary>
     /// Latest filling time
     /// </summary>
@@ -480,7 +452,6 @@ namespace IO.Swagger.Model {
     [JsonProperty(PropertyName = "latest_filling_time")]
     public int? LatestFillingTime { get; set; }
 
-    
 
     /// <summary>
     /// Get the string presentation of the object
@@ -489,111 +460,61 @@ namespace IO.Swagger.Model {
     public override string ToString()  {
       var sb = new StringBuilder();
       sb.Append("class UserVariable {\n");
-      
       sb.Append("  ParentId: ").Append(ParentId).Append("\n");
-      
+      sb.Append("  UserId: ").Append(UserId).Append("\n");
       sb.Append("  ClientId: ").Append(ClientId).Append("\n");
-      
       sb.Append("  VariableId: ").Append(VariableId).Append("\n");
-      
       sb.Append("  DefaultUnitId: ").Append(DefaultUnitId).Append("\n");
-      
       sb.Append("  MinimumAllowedValue: ").Append(MinimumAllowedValue).Append("\n");
-      
       sb.Append("  MaximumAllowedValue: ").Append(MaximumAllowedValue).Append("\n");
-      
       sb.Append("  FillingValue: ").Append(FillingValue).Append("\n");
-      
       sb.Append("  JoinWith: ").Append(JoinWith).Append("\n");
-      
       sb.Append("  OnsetDelay: ").Append(OnsetDelay).Append("\n");
-      
       sb.Append("  DurationOfAction: ").Append(DurationOfAction).Append("\n");
-      
       sb.Append("  VariableCategoryId: ").Append(VariableCategoryId).Append("\n");
-      
       sb.Append("  Updated: ").Append(Updated).Append("\n");
-      
-      sb.Append("  Public: ").Append(Public).Append("\n");
-      
+      sb.Append("  _Public: ").Append(_Public).Append("\n");
       sb.Append("  CauseOnly: ").Append(CauseOnly).Append("\n");
-      
       sb.Append("  FillingType: ").Append(FillingType).Append("\n");
-      
       sb.Append("  NumberOfMeasurements: ").Append(NumberOfMeasurements).Append("\n");
-      
       sb.Append("  NumberOfProcessedMeasurements: ").Append(NumberOfProcessedMeasurements).Append("\n");
-      
       sb.Append("  MeasurementsAtLastAnalysis: ").Append(MeasurementsAtLastAnalysis).Append("\n");
-      
       sb.Append("  LastUnitId: ").Append(LastUnitId).Append("\n");
-      
       sb.Append("  LastOriginalUnitId: ").Append(LastOriginalUnitId).Append("\n");
-      
       sb.Append("  LastValue: ").Append(LastValue).Append("\n");
-      
       sb.Append("  LastOriginalValue: ").Append(LastOriginalValue).Append("\n");
-      
       sb.Append("  LastSourceId: ").Append(LastSourceId).Append("\n");
-      
       sb.Append("  NumberOfCorrelations: ").Append(NumberOfCorrelations).Append("\n");
-      
       sb.Append("  Status: ").Append(Status).Append("\n");
-      
       sb.Append("  ErrorMessage: ").Append(ErrorMessage).Append("\n");
-      
       sb.Append("  LastSuccessfulUpdateTime: ").Append(LastSuccessfulUpdateTime).Append("\n");
-      
       sb.Append("  StandardDeviation: ").Append(StandardDeviation).Append("\n");
-      
       sb.Append("  Variance: ").Append(Variance).Append("\n");
-      
-      sb.Append("  MinimumRecordedDailyValue: ").Append(MinimumRecordedDailyValue).Append("\n");
-      
+      sb.Append("  MinimumRecordedValue: ").Append(MinimumRecordedValue).Append("\n");
       sb.Append("  MaximumRecordedDailyValue: ").Append(MaximumRecordedDailyValue).Append("\n");
-      
       sb.Append("  Mean: ").Append(Mean).Append("\n");
-      
       sb.Append("  Median: ").Append(Median).Append("\n");
-      
       sb.Append("  MostCommonUnitId: ").Append(MostCommonUnitId).Append("\n");
-      
       sb.Append("  MostCommonValue: ").Append(MostCommonValue).Append("\n");
-      
       sb.Append("  NumberOfUniqueDailyValues: ").Append(NumberOfUniqueDailyValues).Append("\n");
-      
       sb.Append("  NumberOfChanges: ").Append(NumberOfChanges).Append("\n");
-      
       sb.Append("  Skewness: ").Append(Skewness).Append("\n");
-      
       sb.Append("  Kurtosis: ").Append(Kurtosis).Append("\n");
-      
       sb.Append("  Latitude: ").Append(Latitude).Append("\n");
-      
       sb.Append("  Longitude: ").Append(Longitude).Append("\n");
-      
       sb.Append("  Location: ").Append(Location).Append("\n");
-      
+      sb.Append("  ExperimentStartTime: ").Append(ExperimentStartTime).Append("\n");
+      sb.Append("  ExperimentEndTime: ").Append(ExperimentEndTime).Append("\n");
       sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
-      
       sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
-      
       sb.Append("  Outcome: ").Append(Outcome).Append("\n");
-      
       sb.Append("  Sources: ").Append(Sources).Append("\n");
-      
       sb.Append("  EarliestSourceTime: ").Append(EarliestSourceTime).Append("\n");
-      
       sb.Append("  LatestSourceTime: ").Append(LatestSourceTime).Append("\n");
-      
       sb.Append("  EarliestMeasurementTime: ").Append(EarliestMeasurementTime).Append("\n");
-      
       sb.Append("  LatestMeasurementTime: ").Append(LatestMeasurementTime).Append("\n");
-      
       sb.Append("  EarliestFillingTime: ").Append(EarliestFillingTime).Append("\n");
-      
       sb.Append("  LatestFillingTime: ").Append(LatestFillingTime).Append("\n");
-      
       sb.Append("}\n");
       return sb.ToString();
     }
